@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b160a7dc-6188-4f4c-b145-c7a8a28b2cdc",
+		"_postman_id": "291114b5-149b-41f1-b444-f2cc1db5af42",
 		"name": "AZ4U Project - Backend API",
 		"description": "AZ4U Project - Backend API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -8,7 +8,7 @@
 	"item": [
 		{
 			"name": "registration flow",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Registrazione",
@@ -201,7 +201,10 @@
 								"value": "{{AZ4U-Client-Id}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{protocol}}://{{host}}:{{port}}/api/customer/resend-email-code",
 							"protocol": "{{protocol}}",
@@ -235,7 +238,10 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/city?provinceCode={{provinceCode}}&lang={{lang}}",
 							"protocol": "{{protocol}}",
@@ -273,7 +279,10 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/country?lang={{lang}}",
 							"protocol": "{{protocol}}",
@@ -307,7 +316,10 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/fund-shares",
 							"protocol": "{{protocol}}",
@@ -335,7 +347,10 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/phone-prefix",
 							"protocol": "{{protocol}}",
@@ -363,7 +378,10 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/province?countryCode={{countryCode}}&lang={{lang}}",
 							"protocol": "{{protocol}}",
@@ -416,15 +434,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http:///customer/change-access-code",
+							"raw": "http://customer/change-access-code",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"customer"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"customer",
 								"change-access-code"
 							]
 						},
@@ -451,15 +466,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http:///customer/change-email",
+							"raw": "http://customer/change-email",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"customer"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"customer",
 								"change-email"
 							]
 						},
@@ -486,15 +498,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http:///customer/confirm-email",
+							"raw": "http://customer/confirm-email",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"customer"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"customer",
 								"confirm-email"
 							]
 						},
@@ -521,15 +530,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http:///customer/login",
+							"raw": "http://customer/login",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"customer"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"customer",
 								"login"
 							]
 						},
@@ -551,17 +557,17 @@
 								"value": "{{AZ4U-Client-Id}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http:///customer/message",
+							"raw": "http://customer/message",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"customer"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"customer",
 								"message"
 							]
 						},
@@ -588,15 +594,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http:///customer/register",
+							"raw": "http://customer/register",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"customer"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"customer",
 								"register"
 							]
 						},
@@ -623,15 +626,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http:///customer/register-app",
+							"raw": "http://customer/register-app",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"customer"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"customer",
 								"register-app"
 							]
 						},
@@ -653,17 +653,17 @@
 								"value": "{{AZ4U-Client-Id}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http:///customer/resend-email-code",
+							"raw": "http://customer/resend-email-code",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"customer"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"customer",
 								"resend-email-code"
 							]
 						},
@@ -685,17 +685,17 @@
 								"value": "{{AZ4U-Client-Id}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http:///customer/view",
+							"raw": "http://customer/view",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"customer"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"customer",
 								"view"
 							]
 						},
@@ -717,17 +717,17 @@
 								"value": "{{AZ4U-Client-Id}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http:///customer/status",
+							"raw": "http://customer/status",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"customer"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"customer",
 								"status"
 							]
 						},
@@ -755,17 +755,17 @@
 								"value": "{{AZ4U-Client-Id}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http:///document/list?typeDocument={{typeDocument}}&idDocument={{idDocument}}",
+							"raw": "http://document/list?typeDocument={{typeDocument}}&idDocument={{idDocument}}",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"document"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"document",
 								"list"
 							],
 							"query": [
@@ -808,15 +808,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http:///fund/booking",
+							"raw": "http://fund/booking",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"fund"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"fund",
 								"booking"
 							]
 						},
@@ -843,15 +840,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http:///fund/confirm-booking",
+							"raw": "http://fund/confirm-booking",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"fund"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"fund",
 								"confirm-booking"
 							]
 						},
@@ -873,17 +867,17 @@
 								"value": "{{AZ4U-Client-Id}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http:///fund/list",
+							"raw": "http://fund/list",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"fund"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"fund",
 								"list"
 							]
 						},
@@ -905,17 +899,17 @@
 								"value": "{{AZ4U-Client-Id}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http:///fund/nav?idFund={{idFund}}&from={{from}}&to={{to}}",
+							"raw": "http://fund/nav?idFund={{idFund}}&from={{from}}&to={{to}}",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"fund"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"fund",
 								"nav"
 							],
 							"query": [
@@ -951,17 +945,17 @@
 								"value": "{{AZ4U-Client-Id}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http:///fund/resend-booking-code?idTrasaction={{idTrasaction}}",
+							"raw": "http://fund/resend-booking-code?idTrasaction={{idTrasaction}}",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"fund"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"fund",
 								"resend-booking-code"
 							],
 							"query": [
@@ -989,23 +983,64 @@
 								"value": "{{AZ4U-Client-Id}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http:///fund/view?idFund={{idFund}}",
+							"raw": "http://fund/view?idFund={{idFund}}",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"fund"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"fund",
 								"view"
 							],
 							"query": [
 								{
 									"key": "idFund",
 									"value": "{{idFund}}"
+								}
+							]
+						},
+						"description": "View fund data"
+					},
+					"response": []
+				},
+				{
+					"name": "fund simulation",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/fund/simulation?idFund=1",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"fund",
+								"simulation"
+							],
+							"query": [
+								{
+									"key": "idFund",
+									"value": "1"
 								}
 							]
 						},
@@ -1033,17 +1068,17 @@
 								"value": "{{AZ4U-Client-Id}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http:///portfolio/view",
+							"raw": "http://portfolio/view",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"portfolio"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"portfolio",
 								"view"
 							]
 						},
@@ -1071,7 +1106,10 @@
 								"value": "{{AZ4U-Client-Id}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{protocol}}://{{host}}:{{port}}/api/survey/question?surveyCode={{surveyCode}}&lang={{lang}}",
 							"protocol": "{{protocol}}",
@@ -1191,7 +1229,10 @@
 								"value": "{{AZ4U-Client-Id}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{protocol}}://{{host}}:{{port}}/api/survey/view?surveyCode={{surveyCode}}&lang={{lang}}",
 							"protocol": "{{protocol}}",
