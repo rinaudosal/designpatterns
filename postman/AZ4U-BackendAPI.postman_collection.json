@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "291114b5-149b-41f1-b444-f2cc1db5af42",
+		"_postman_id": "873e770d-7fc2-4651-b40f-0ea05e12a597",
 		"name": "AZ4U Project - Backend API",
 		"description": "AZ4U Project - Backend API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -118,6 +118,52 @@
 								"api",
 								"customer",
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrazione alla prova",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "16eb78f6-522c-489f-a636-18b92bedb958",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setGlobalVariable(\"AZ4U-Client-Id\", postman.getResponseHeader(\"AZ4U-Client-Id\"));"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fiscalCode\": \"MNNPOI86T17F899E\",\n  \"countryResidence\": \"it\",\n  \"promoCode\": \"MILLENNIALS\"\n}"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/customer/register-trial",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"customer",
+								"register-trial"
 							]
 						}
 					},
