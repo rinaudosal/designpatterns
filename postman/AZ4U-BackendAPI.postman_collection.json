@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "873e770d-7fc2-4651-b40f-0ea05e12a597",
+		"_postman_id": "291114b5-149b-41f1-b444-f2cc1db5af42",
 		"name": "AZ4U Project - Backend API",
 		"description": "AZ4U Project - Backend API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -124,52 +124,6 @@
 					"response": []
 				},
 				{
-					"name": "Registrazione alla prova",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "16eb78f6-522c-489f-a636-18b92bedb958",
-								"type": "text/javascript",
-								"exec": [
-									"postman.setGlobalVariable(\"AZ4U-Client-Id\", postman.getResponseHeader(\"AZ4U-Client-Id\"));"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"fiscalCode\": \"MNNPOI86T17F899E\",\n  \"countryResidence\": \"it\",\n  \"promoCode\": \"MILLENNIALS\"\n}"
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/customer/register-trial",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"customer",
-								"register-trial"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Modifico la password",
 					"request": {
 						"method": "PUT",
@@ -276,6 +230,47 @@
 			"item": [
 				{
 					"name": "Cities of the province",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/city?provinceCode={{provinceCode}}&lang={{lang}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"common-data",
+								"city"
+							],
+							"query": [
+								{
+									"key": "provinceCode",
+									"value": "{{provinceCode}}"
+								},
+								{
+									"key": "lang",
+									"value": "{{lang}}"
+								}
+							]
+						},
+						"description": "Return the list of cities of the province"
+					},
+					"response": []
+				},
+				{
+					"name": "Cities of the province Copy",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1091,6 +1086,159 @@
 							]
 						},
 						"description": "View fund data"
+					},
+					"response": []
+				},
+				{
+					"name": "fund list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/fund/simulation?idFund=1",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"fund",
+								"simulation"
+							],
+							"query": [
+								{
+									"key": "idFund",
+									"value": "1"
+								}
+							]
+						},
+						"description": "View fund data"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "trial Copy",
+			"description": "Folder for trial",
+			"item": [
+				{
+					"name": "Fund trial start",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idFund\": \"1\",\n  \"amount\": 1000,\n  \"userRiskConfirmation\": true\n}"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/trial/start",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"trial",
+								"start"
+							]
+						},
+						"description": "Fund trial start"
+					},
+					"response": []
+				},
+				{
+					"name": "Fund trial update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http:///trial/update",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"trial",
+								"update"
+							]
+						},
+						"description": "Fund trial update"
+					},
+					"response": []
+				},
+				{
+					"name": "View the trial info for the specified customer",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/trial/view",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"trial",
+								"view"
+							]
+						},
+						"description": "Return the trial info for the specified customer"
 					},
 					"response": []
 				}
