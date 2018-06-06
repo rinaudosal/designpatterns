@@ -1,867 +1,15 @@
 {
 	"info": {
-		"_postman_id": "291114b5-149b-41f1-b444-f2cc1db5af42",
+		"_postman_id": "97dea8a1-fdce-4540-97c1-57c1a238bf84",
 		"name": "AZ4U Project - Backend API",
 		"description": "AZ4U Project - Backend API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "registration flow",
-			"description": null,
-			"item": [
-				{
-					"name": "Registrazione",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "16eb78f6-522c-489f-a636-18b92bedb958",
-								"type": "text/javascript",
-								"exec": [
-									"postman.setGlobalVariable(\"AZ4U-Client-Id\", postman.getResponseHeader(\"AZ4U-Client-Id\"));"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Giulio\",\n  \"surname\": \"Bianchi\",\n  \"email\": \"{{email}}\",\n  \"alreadyAzimutCustomer\": \"false\",\n  \"privacyAgreement\": \"true\",\n  \"lang\": \"{{lang}}\"\n}"
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/customer/register-app",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"customer",
-								"register-app"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Conferma la registrazione",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"email\": \"{{email}}\",\n  \"confirmationCode\": \"{{pin}}\"\n}"
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/customer/confirm-email?",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"customer",
-								"confirm-email"
-							],
-							"query": [
-								{
-									"key": "email",
-									"value": null,
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Login",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"username\": \"{{email}}\",\n  \"accessCode\": \"{{pin}}\"\n}"
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/customer/login",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"customer",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Modifico la password",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"oldAccessCode\": \"{{pin}}\",\n  \"newAccessCode\": \"01234567\",\n  \"confirmNewAccessCode\": \"01234567\"\n}"
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/customer/change-access-code",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"customer",
-								"change-access-code"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Richiedo lo stato dell'utente abilitato",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/customer/status",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"customer",
-								"status"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Reinvio mail",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/customer/resend-email-code",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"customer",
-								"resend-email-code"
-							]
-						},
-						"description": "Emit a new e-mail confirmation code"
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "common-data",
-			"description": "Folder for common-data",
-			"item": [
-				{
-					"name": "Cities of the province",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/city?provinceCode={{provinceCode}}&lang={{lang}}",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"common-data",
-								"city"
-							],
-							"query": [
-								{
-									"key": "provinceCode",
-									"value": "{{provinceCode}}"
-								},
-								{
-									"key": "lang",
-									"value": "{{lang}}"
-								}
-							]
-						},
-						"description": "Return the list of cities of the province"
-					},
-					"response": []
-				},
-				{
-					"name": "Cities of the province Copy",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/city?provinceCode={{provinceCode}}&lang={{lang}}",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"common-data",
-								"city"
-							],
-							"query": [
-								{
-									"key": "provinceCode",
-									"value": "{{provinceCode}}"
-								},
-								{
-									"key": "lang",
-									"value": "{{lang}}"
-								}
-							]
-						},
-						"description": "Return the list of cities of the province"
-					},
-					"response": []
-				},
-				{
-					"name": "Countries available",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/country?lang={{lang}}",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"common-data",
-								"country"
-							],
-							"query": [
-								{
-									"key": "lang",
-									"value": "{{lang}}"
-								}
-							]
-						},
-						"description": "List of country"
-					},
-					"response": []
-				},
-				{
-					"name": "Fund shares",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/fund-shares",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"common-data",
-								"fund-shares"
-							]
-						},
-						"description": "Fund shares for simulation and investment purposes"
-					},
-					"response": []
-				},
-				{
-					"name": "Phone prefixes of the countries",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/phone-prefix",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"common-data",
-								"phone-prefix"
-							]
-						},
-						"description": "List of phone prefixes"
-					},
-					"response": []
-				},
-				{
-					"name": "Provinces available for the country",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/province?countryCode={{countryCode}}&lang={{lang}}",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"common-data",
-								"province"
-							],
-							"query": [
-								{
-									"key": "countryCode",
-									"value": "{{countryCode}}"
-								},
-								{
-									"key": "lang",
-									"value": "{{lang}}"
-								}
-							]
-						},
-						"description": "List of provinces for the country"
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "customer",
-			"description": "Folder for customer",
-			"item": [
-				{
-					"name": "Request access code change",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://customer/change-access-code",
-							"protocol": "http",
-							"host": [
-								"customer"
-							],
-							"path": [
-								"change-access-code"
-							]
-						},
-						"description": "Perform a request of access code change"
-					},
-					"response": []
-				},
-				{
-					"name": "Request an email change",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://customer/change-email",
-							"protocol": "http",
-							"host": [
-								"customer"
-							],
-							"path": [
-								"change-email"
-							]
-						},
-						"description": "Perform a request of email address change"
-					},
-					"response": []
-				},
-				{
-					"name": "Email confirmation code",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://customer/confirm-email",
-							"protocol": "http",
-							"host": [
-								"customer"
-							],
-							"path": [
-								"confirm-email"
-							]
-						},
-						"description": "Email confirmation code, used for customer registration"
-					},
-					"response": []
-				},
-				{
-					"name": "Customer login",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://customer/login",
-							"protocol": "http",
-							"host": [
-								"customer"
-							],
-							"path": [
-								"login"
-							]
-						},
-						"description": "Service for access to App"
-					},
-					"response": []
-				},
-				{
-					"name": "View the list of messages for the customer",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://customer/message",
-							"protocol": "http",
-							"host": [
-								"customer"
-							],
-							"path": [
-								"message"
-							]
-						},
-						"description": "Get the customer's list of messages"
-					},
-					"response": []
-				},
-				{
-					"name": "Customer registration",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://customer/register",
-							"protocol": "http",
-							"host": [
-								"customer"
-							],
-							"path": [
-								"register"
-							]
-						},
-						"description": "Customer registration, the api also sends the confirmation codes by email and sms in asynch mode"
-					},
-					"response": []
-				},
-				{
-					"name": "Customer App registration",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://customer/register-app",
-							"protocol": "http",
-							"host": [
-								"customer"
-							],
-							"path": [
-								"register-app"
-							]
-						},
-						"description": "Customer App registration, the api also sends the PIN code by email in asynch mode"
-					},
-					"response": []
-				},
-				{
-					"name": "Request of a new email code emission",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://customer/resend-email-code",
-							"protocol": "http",
-							"host": [
-								"customer"
-							],
-							"path": [
-								"resend-email-code"
-							]
-						},
-						"description": "Emit a new e-mail confirmation code"
-					},
-					"response": []
-				},
-				{
-					"name": "View customer data",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://customer/view",
-							"protocol": "http",
-							"host": [
-								"customer"
-							],
-							"path": [
-								"view"
-							]
-						},
-						"description": "View customer data"
-					},
-					"response": []
-				},
-				{
-					"name": "Get the status of a customer",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://customer/status",
-							"protocol": "http",
-							"host": [
-								"customer"
-							],
-							"path": [
-								"status"
-							]
-						},
-						"description": "Get the status of a customer"
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "document",
-			"description": "Folder for document",
-			"item": [
-				{
-					"name": "Customer's documents",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://document/list?typeDocument={{typeDocument}}&idDocument={{idDocument}}",
-							"protocol": "http",
-							"host": [
-								"document"
-							],
-							"path": [
-								"list"
-							],
-							"query": [
-								{
-									"key": "typeDocument",
-									"value": "{{typeDocument}}"
-								},
-								{
-									"key": "idDocument",
-									"value": "{{idDocument}}"
-								}
-							]
-						},
-						"description": "List of documents of the customer or generic documents"
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "fund",
 			"description": "Folder for fund",
 			"item": [
-				{
-					"name": "Fund booking/reservation",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://fund/booking",
-							"protocol": "http",
-							"host": [
-								"fund"
-							],
-							"path": [
-								"booking"
-							]
-						},
-						"description": "Fund booking"
-					},
-					"response": []
-				},
 				{
 					"name": "Booking confirmation",
 					"request": {
@@ -891,38 +39,6 @@
 							]
 						},
 						"description": "Confirm fund booking"
-					},
-					"response": []
-				},
-				{
-					"name": "Get the funds available",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://fund/list",
-							"protocol": "http",
-							"host": [
-								"fund"
-							],
-							"path": [
-								"list"
-							]
-						},
-						"description": "List of funds available"
 					},
 					"response": []
 				},
@@ -969,6 +85,38 @@
 							]
 						},
 						"description": "Return the list of NAV for the specified fund within the dates range"
+					},
+					"response": []
+				},
+				{
+					"name": "Get the funds available",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://fund/list",
+							"protocol": "http",
+							"host": [
+								"fund"
+							],
+							"path": [
+								"list"
+							]
+						},
+						"description": "List of funds available"
 					},
 					"response": []
 				},
@@ -1090,7 +238,232 @@
 					"response": []
 				},
 				{
-					"name": "fund list",
+					"name": "Fund booking/reservation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://fund/booking",
+							"protocol": "http",
+							"host": [
+								"fund"
+							],
+							"path": [
+								"booking"
+							]
+						},
+						"description": "Fund booking"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "common-data",
+			"description": "Folder for common-data",
+			"item": [
+				{
+					"name": "Fund shares",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/fund-shares",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"common-data",
+								"fund-shares"
+							]
+						},
+						"description": "Fund shares for simulation and investment purposes"
+					},
+					"response": []
+				},
+				{
+					"name": "Countries available",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/country?lang={{lang}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"common-data",
+								"country"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "{{lang}}"
+								}
+							]
+						},
+						"description": "List of country"
+					},
+					"response": []
+				},
+				{
+					"name": "Phone prefixes of the countries",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/phone-prefix",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"common-data",
+								"phone-prefix"
+							]
+						},
+						"description": "List of phone prefixes"
+					},
+					"response": []
+				},
+				{
+					"name": "Provinces available for the country",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/province?countryCode={{countryCode}}&lang={{lang}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"common-data",
+								"province"
+							],
+							"query": [
+								{
+									"key": "countryCode",
+									"value": "{{countryCode}}"
+								},
+								{
+									"key": "lang",
+									"value": "{{lang}}"
+								}
+							]
+						},
+						"description": "List of provinces for the country"
+					},
+					"response": []
+				},
+				{
+					"name": "Cities of the province",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/city?provinceCode={{provinceCode}}&lang={{lang}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"common-data",
+								"city"
+							],
+							"query": [
+								{
+									"key": "provinceCode",
+									"value": "{{provinceCode}}"
+								},
+								{
+									"key": "lang",
+									"value": "{{lang}}"
+								}
+							]
+						},
+						"description": "Return the list of cities of the province"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "portfolio",
+			"description": "Folder for portfolio",
+			"item": [
+				{
+					"name": "Portfolio of customer",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1108,7 +481,49 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/fund/simulation?idFund=1",
+							"raw": "http://portfolio/view",
+							"protocol": "http",
+							"host": [
+								"portfolio"
+							],
+							"path": [
+								"view"
+							]
+						},
+						"description": "Return the portfolio of the customer"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "survey",
+			"description": "Folder for survey",
+			"item": [
+				{
+					"name": "Send the answers modified for the specified survey",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"lang\": \"{{lang}}\",\n  \"surveyCode\": \"{{surveyCode}}\",\n  \"answers\": [\n    {\n      \"questionCode\": \"1\",\n      \"answerCode\": \"2\"\n    },\n    {\n      \"questionCode\": \"2\",\n      \"answerCode\": \"5\"\n    },\n    {\n      \"questionCode\": \"3\",\n      \"answerCode\": \"9\"\n    },\n    {\n      \"questionCode\": \"4\",\n      \"answerCode\": \"13\"\n    },\n    {\n      \"questionCode\": \"5\",\n      \"answerCode\": \"16\"\n    },\n    {\n      \"questionCode\": \"6\",\n      \"answerCode\": \"19\"\n    },{\n      \"questionCode\": \"7\",\n      \"answerCode\": \"21\"\n    },{\n      \"questionCode\": \"8\",\n      \"answerCode\": \"25\"\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/survey/update",
 							"protocol": "{{protocol}}",
 							"host": [
 								"{{host}}"
@@ -1116,24 +531,785 @@
 							"port": "{{port}}",
 							"path": [
 								"api",
-								"fund",
-								"simulation"
+								"survey",
+								"update"
+							]
+						},
+						"description": "Submit the answer modified for the specified survey"
+					},
+					"response": []
+				},
+				{
+					"name": "Send the answers for the specified survey",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"lang\": \"{{lang}}\",\n  \"surveyCode\": \"{{surveyCode}}\",\n  \"answers\": [\n    {\n      \"questionCode\": \"1\",\n      \"answerCode\": \"2\"\n    },\n    {\n      \"questionCode\": \"2\",\n      \"answerCode\": \"5\"\n    },\n    {\n      \"questionCode\": \"3\",\n      \"answerCode\": \"9\"\n    },\n    {\n      \"questionCode\": \"4\",\n      \"answerCode\": \"13\"\n    },\n    {\n      \"questionCode\": \"5\",\n      \"answerCode\": \"16\"\n    },\n    {\n      \"questionCode\": \"6\",\n      \"answerCode\": \"19\"\n    },{\n      \"questionCode\": \"7\",\n      \"answerCode\": \"21\"\n    },{\n      \"questionCode\": \"8\",\n      \"answerCode\": \"25\"\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/survey/submit",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"survey",
+								"submit"
+							]
+						},
+						"description": "Submit the answer for the specified survey"
+					},
+					"response": []
+				},
+				{
+					"name": "View the compiled Survey for the specified customer",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/survey/view?surveyCode={{surveyCode}}&lang={{lang}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"survey",
+								"view"
 							],
 							"query": [
 								{
-									"key": "idFund",
-									"value": "1"
+									"key": "surveyCode",
+									"value": "{{surveyCode}}"
+								},
+								{
+									"key": "lang",
+									"value": "{{lang}}"
 								}
 							]
 						},
-						"description": "View fund data"
+						"description": "Return the compiled survey for specified customer"
+					},
+					"response": []
+				},
+				{
+					"name": "View the list of questions for the specified survey",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/survey/question?surveyCode={{surveyCode}}&lang={{lang}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"survey",
+								"question"
+							],
+							"query": [
+								{
+									"key": "surveyCode",
+									"value": "{{surveyCode}}"
+								},
+								{
+									"key": "lang",
+									"value": "{{lang}}"
+								}
+							]
+						},
+						"description": "Return the specified survey"
 					},
 					"response": []
 				}
 			]
 		},
 		{
-			"name": "trial Copy",
+			"name": "registration flow",
+			"description": null,
+			"item": [
+				{
+					"name": "Reinvio mail",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/customer/resend-email-code",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"customer",
+								"resend-email-code"
+							]
+						},
+						"description": "Emit a new e-mail confirmation code"
+					},
+					"response": []
+				},
+				{
+					"name": "Registrazione alla prova",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "16eb78f6-522c-489f-a636-18b92bedb958",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setGlobalVariable(\"AZ4U-Client-Id\", postman.getResponseHeader(\"AZ4U-Client-Id\"));"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fiscalCode\": \"MNNPOI86T17F899E\",\n  \"countryResidence\": \"it\",\n  \"promoCode\": \"MILLENNIALS\"\n}"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/customer/register-trial",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"customer",
+								"register-trial"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modifico la password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"oldAccessCode\": \"{{pin}}\",\n  \"newAccessCode\": \"01234567\",\n  \"confirmNewAccessCode\": \"01234567\"\n}"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/customer/change-access-code",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"customer",
+								"change-access-code"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Conferma la registrazione",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"{{email}}\",\n  \"confirmationCode\": \"{{pin}}\"\n}"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/customer/confirm-email?",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"customer",
+								"confirm-email"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrazione",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "16eb78f6-522c-489f-a636-18b92bedb958",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setGlobalVariable(\"AZ4U-Client-Id\", postman.getResponseHeader(\"AZ4U-Client-Id\"));"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Giulio\",\n  \"surname\": \"Bianchi\",\n  \"email\": \"{{email}}\",\n  \"alreadyAzimutCustomer\": \"false\",\n  \"privacyAgreement\": \"true\",\n  \"lang\": \"{{lang}}\"\n}"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/customer/register-app",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"customer",
+								"register-app"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{email}}\",\n  \"accessCode\": \"{{pin}}\"\n}"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/customer/login",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"customer",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Richiedo lo stato dell'utente abilitato",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/customer/status",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"customer",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "customer",
+			"description": "Folder for customer",
+			"item": [
+				{
+					"name": "Get the status of a customer",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://customer/status",
+							"protocol": "http",
+							"host": [
+								"customer"
+							],
+							"path": [
+								"status"
+							]
+						},
+						"description": "Get the status of a customer"
+					},
+					"response": []
+				},
+				{
+					"name": "Customer App registration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://customer/register-app",
+							"protocol": "http",
+							"host": [
+								"customer"
+							],
+							"path": [
+								"register-app"
+							]
+						},
+						"description": "Customer App registration, the api also sends the PIN code by email in asynch mode"
+					},
+					"response": []
+				},
+				{
+					"name": "Customer registration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://customer/register",
+							"protocol": "http",
+							"host": [
+								"customer"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "Customer registration, the api also sends the confirmation codes by email and sms in asynch mode"
+					},
+					"response": []
+				},
+				{
+					"name": "Request an email change",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://customer/change-email",
+							"protocol": "http",
+							"host": [
+								"customer"
+							],
+							"path": [
+								"change-email"
+							]
+						},
+						"description": "Perform a request of email address change"
+					},
+					"response": []
+				},
+				{
+					"name": "View the list of messages for the customer",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://customer/message",
+							"protocol": "http",
+							"host": [
+								"customer"
+							],
+							"path": [
+								"message"
+							]
+						},
+						"description": "Get the customer's list of messages"
+					},
+					"response": []
+				},
+				{
+					"name": "View customer data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://customer/view",
+							"protocol": "http",
+							"host": [
+								"customer"
+							],
+							"path": [
+								"view"
+							]
+						},
+						"description": "View customer data"
+					},
+					"response": []
+				},
+				{
+					"name": "Email confirmation code",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://customer/confirm-email",
+							"protocol": "http",
+							"host": [
+								"customer"
+							],
+							"path": [
+								"confirm-email"
+							]
+						},
+						"description": "Email confirmation code, used for customer registration"
+					},
+					"response": []
+				},
+				{
+					"name": "Request of a new email code emission",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://customer/resend-email-code",
+							"protocol": "http",
+							"host": [
+								"customer"
+							],
+							"path": [
+								"resend-email-code"
+							]
+						},
+						"description": "Emit a new e-mail confirmation code"
+					},
+					"response": []
+				},
+				{
+					"name": "Customer login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://customer/login",
+							"protocol": "http",
+							"host": [
+								"customer"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "Service for access to App"
+					},
+					"response": []
+				},
+				{
+					"name": "Request access code change",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://customer/change-access-code",
+							"protocol": "http",
+							"host": [
+								"customer"
+							],
+							"path": [
+								"change-access-code"
+							]
+						},
+						"description": "Perform a request of access code change"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "document",
+			"description": "Folder for document",
+			"item": [
+				{
+					"name": "Customer's documents",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://document/list?typeDocument={{typeDocument}}&idDocument={{idDocument}}",
+							"protocol": "http",
+							"host": [
+								"document"
+							],
+							"path": [
+								"list"
+							],
+							"query": [
+								{
+									"key": "typeDocument",
+									"value": "{{typeDocument}}"
+								},
+								{
+									"key": "idDocument",
+									"value": "{{idDocument}}"
+								}
+							]
+						},
+						"description": "List of documents of the customer or generic documents"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "trial",
 			"description": "Folder for trial",
 			"item": [
 				{
@@ -1194,15 +1370,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http:///trial/update",
+							"raw": "http://trial/update",
+							"protocol": "http",
 							"host": [
-								"http:"
+								"trial"
 							],
-							"port": "",
 							"path": [
-								"",
-								"",
-								"trial",
 								"update"
 							]
 						},
@@ -1224,7 +1397,10 @@
 								"value": "{{AZ4U-Client-Id}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{protocol}}://{{host}}:{{port}}/api/trial/view",
 							"protocol": "{{protocol}}",
@@ -1242,217 +1418,27 @@
 					},
 					"response": []
 				}
-			]
-		},
-		{
-			"name": "portfolio",
-			"description": "Folder for portfolio",
-			"item": [
+			],
+			"event": [
 				{
-					"name": "Portfolio of customer",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://portfolio/view",
-							"protocol": "http",
-							"host": [
-								"portfolio"
-							],
-							"path": [
-								"view"
-							]
-						},
-						"description": "Return the portfolio of the customer"
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "survey",
-			"description": "Folder for survey",
-			"item": [
-				{
-					"name": "View the list of questions for the specified survey",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/survey/question?surveyCode={{surveyCode}}&lang={{lang}}",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"survey",
-								"question"
-							],
-							"query": [
-								{
-									"key": "surveyCode",
-									"value": "{{surveyCode}}"
-								},
-								{
-									"key": "lang",
-									"value": "{{lang}}"
-								}
-							]
-						},
-						"description": "Return the specified survey"
-					},
-					"response": []
+					"listen": "prerequest",
+					"script": {
+						"id": "1f7839f9-e3be-4530-931f-e1927e5ac68d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				},
 				{
-					"name": "Send the answers for the specified survey",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"lang\": \"{{lang}}\",\n  \"surveyCode\": \"{{surveyCode}}\",\n  \"answers\": [\n    {\n      \"questionCode\": \"1\",\n      \"answerCode\": \"2\"\n    },\n    {\n      \"questionCode\": \"2\",\n      \"answerCode\": \"5\"\n    },\n    {\n      \"questionCode\": \"3\",\n      \"answerCode\": \"9\"\n    },\n    {\n      \"questionCode\": \"4\",\n      \"answerCode\": \"13\"\n    },\n    {\n      \"questionCode\": \"5\",\n      \"answerCode\": \"16\"\n    },\n    {\n      \"questionCode\": \"6\",\n      \"answerCode\": \"19\"\n    },{\n      \"questionCode\": \"7\",\n      \"answerCode\": \"21\"\n    },{\n      \"questionCode\": \"8\",\n      \"answerCode\": \"25\"\n    }\n  ]\n}"
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/survey/submit",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"survey",
-								"submit"
-							]
-						},
-						"description": "Submit the answer for the specified survey"
-					},
-					"response": []
-				},
-				{
-					"name": "Send the answers modified for the specified survey",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"lang\": \"{{lang}}\",\n  \"surveyCode\": \"{{surveyCode}}\",\n  \"answers\": [\n    {\n      \"questionCode\": \"1\",\n      \"answerCode\": \"2\"\n    },\n    {\n      \"questionCode\": \"2\",\n      \"answerCode\": \"5\"\n    },\n    {\n      \"questionCode\": \"3\",\n      \"answerCode\": \"9\"\n    },\n    {\n      \"questionCode\": \"4\",\n      \"answerCode\": \"13\"\n    },\n    {\n      \"questionCode\": \"5\",\n      \"answerCode\": \"16\"\n    },\n    {\n      \"questionCode\": \"6\",\n      \"answerCode\": \"19\"\n    },{\n      \"questionCode\": \"7\",\n      \"answerCode\": \"21\"\n    },{\n      \"questionCode\": \"8\",\n      \"answerCode\": \"25\"\n    }\n  ]\n}"
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/survey/update",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"survey",
-								"update"
-							]
-						},
-						"description": "Submit the answer modified for the specified survey"
-					},
-					"response": []
-				},
-				{
-					"name": "View the compiled Survey for the specified customer",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "AZ4U-Client-Id",
-								"value": "{{AZ4U-Client-Id}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/survey/view?surveyCode={{surveyCode}}&lang={{lang}}",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"port": "{{port}}",
-							"path": [
-								"api",
-								"survey",
-								"view"
-							],
-							"query": [
-								{
-									"key": "surveyCode",
-									"value": "{{surveyCode}}"
-								},
-								{
-									"key": "lang",
-									"value": "{{lang}}"
-								}
-							]
-						},
-						"description": "Return the compiled survey for specified customer"
-					},
-					"response": []
+					"listen": "test",
+					"script": {
+						"id": "9c7826d7-01f8-440e-8296-2534a0f9f898",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		}
