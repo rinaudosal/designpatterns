@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "97dea8a1-fdce-4540-97c1-57c1a238bf84",
+		"_postman_id": "7981f262-e758-432a-98ac-2132736d3976",
 		"name": "AZ4U Project - Backend API",
 		"description": "AZ4U Project - Backend API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -234,6 +234,50 @@
 							]
 						},
 						"description": "View fund data"
+					},
+					"response": []
+				},
+				{
+					"name": "fund performance",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/fund/performance?idFund=1&nMonth=3",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"fund",
+								"performance"
+							],
+							"query": [
+								{
+									"key": "idFund",
+									"value": "1"
+								},
+								{
+									"key": "nMonth",
+									"value": "3"
+								}
+							]
+						}
 					},
 					"response": []
 				},
