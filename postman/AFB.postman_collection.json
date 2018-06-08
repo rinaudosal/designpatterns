@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "be5454e1-fc73-4c0b-b5a9-7718b47ac569",
+		"_postman_id": "63a5804c-1510-46e0-aed0-7d98e0b4f26d",
 		"name": "AZIMUTINFO",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -313,7 +313,7 @@
 					"raw": "{\r\n\t\"price\": {\r\n\t\t\"priceSearchCode\": \"06\",\r\n\t\t\"count\": null,\r\n\t\t\"startDate\": null, \r\n\t\t\"endDate\": null,\r\n\t\t\"numberOfMonth\": 3\r\n\t}, \r\n\t\"page\":null\r\n}\r\n"
 				},
 				"url": {
-					"raw": "{{scheme}}://{{hostname}}:{{port}}/{{context.api}}/markets/5/funds/9",
+					"raw": "{{scheme}}://{{hostname}}:{{port}}/{{context.api}}/markets/any/funds/9/documents/KIID",
 					"protocol": "{{scheme}}",
 					"host": [
 						"{{hostname}}"
@@ -322,9 +322,11 @@
 					"path": [
 						"{{context.api}}",
 						"markets",
-						"5",
+						"any",
 						"funds",
-						"9"
+						"9",
+						"documents",
+						"KIID"
 					]
 				}
 			},
@@ -335,7 +337,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{scheme}}://{{hostname}}:{{port}}/{{context.api}}/resource/h9vn7gnjowduiurahnz3ggjds7o0p7tdz7bo9lxt19u868qhs6nx6inlxtkm",
 					"protocol": "{{scheme}}",
@@ -351,6 +356,28 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "1efbc4fc-40a7-4f8c-a430-1d4e96236685",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "dc6af2fe-df24-4664-9b5e-dbe5ef1e80aa",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
