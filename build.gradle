@@ -7,7 +7,7 @@ task wrapper(type: Wrapper) {
 }
 
 buildscript {
-    ext.kotlin_version = '1.2.10'
+    ext.kotlin_version = '1.2.50'
     ext.ktor_version = '0.9.1'
     ext.shadow_version = '2.0.2'
 
@@ -62,7 +62,7 @@ repositories {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     compile "io.ktor:ktor-server-netty:$ktor_version"
     compile "io.ktor:ktor-metrics:$ktor_version"
     compile "io.ktor:ktor-locations:$ktor_version"
