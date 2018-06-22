@@ -10,8 +10,6 @@ import java.util.concurrent.Executors
 import io.swagger.server.settings
 
 
-
-
 /**
  * Application block for [HSTS] configuration.
  *
@@ -30,7 +28,6 @@ internal fun ApplicationHstsConfiguration(): HSTS.Configuration.() -> Unit {
         // customDirectives.put("redirectHttpToHttps", "false")
     }
 }
-
 
 
 /**

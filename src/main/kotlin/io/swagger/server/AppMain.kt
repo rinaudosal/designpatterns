@@ -17,8 +17,6 @@ import java.util.concurrent.*
 import io.swagger.server.apis.*
 
 
-
-
 internal val settings = HoconApplicationConfig(ConfigFactory.defaultApplication(HTTP::class.java.classLoader))
 
 object HTTP {
@@ -27,43 +25,34 @@ object HTTP {
 
 fun Application.main() {
     install(DefaultHeaders)
-    install(Metrics) {
-        val reporter = Slf4jReporter.forRegistry(registry)
-                .outputTo(log)
-                .convertRatesTo(TimeUnit.SECONDS)
-                .convertDurationsTo(TimeUnit.MILLISECONDS)
-                .build()
-        reporter.start(10, TimeUnit.SECONDS)
-    }
+//    install(Metrics) {
+//        val reporter = Slf4jReporter.forRegistry(registry)
+//                .outputTo(log)
+//                .convertRatesTo(TimeUnit.SECONDS)
+//                .convertDurationsTo(TimeUnit.MILLISECONDS)
+//                .build()
+//        reporter.start(10, TimeUnit.SECONDS)
+//    }
 
     install(ContentNegotiation) {
         register(ContentType.Application.Json, GsonConverter())
     }
-    
+
     install(AutoHeadResponse) // see http://ktor.io/features/autoheadresponse.html
-    
-    
-    
+
+
     install(HSTS, ApplicationHstsConfiguration()) // see http://ktor.io/features/hsts.html
-    
-    
-    
+
+
     install(Compression, ApplicationCompressionConfiguration()) // see http://ktor.io/features/compression.html
-    
+
     install(Locations) // see http://ktor.io/features/locations.html
     install(Routing) {
-    
-    
-    
         DefaultApi()
-    
-    
-    
     }
 
 
-    environment.monitor.subscribe(ApplicationStopping)
-    {
+    environment.monitor.subscribe(ApplicationStopping) {
         HTTP.client.close()
     }
 }

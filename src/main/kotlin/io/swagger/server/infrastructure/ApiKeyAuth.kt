@@ -17,11 +17,13 @@ enum class ApiKeyLocation(val location: String) {
     QUERY("query"),
     HEADER("header")
 }
-data class ApiKey(val value: String): Credential
+
+data class ApiKey(val value: String) : Credential
 data class ApiPrincipal(val apiKey: ApiKey?) : Principal
+
 fun ApplicationCall.apiKey(key: String, keyLocation: ApiKeyLocation = ApiKeyLocation.valueOf("header")): ApiKey? = request.apiKey(key, keyLocation)
 fun ApplicationRequest.apiKey(key: String, keyLocation: ApiKeyLocation = ApiKeyLocation.valueOf("header")): ApiKey? {
-    val value: String? = when(keyLocation) {
+    val value: String? = when (keyLocation) {
         ApiKeyLocation.QUERY -> this.queryParameters[key]
         ApiKeyLocation.HEADER -> this.headers[key]
     }
@@ -33,7 +35,7 @@ fun ApplicationRequest.apiKey(key: String, keyLocation: ApiKeyLocation = ApiKeyL
 
 fun AuthenticationPipeline.apiKeyAuth(apiKeyName: String, authLocation: String, validate: suspend (ApiKey) -> ApiPrincipal?) {
     intercept(AuthenticationPipeline.RequestAuthentication) { context ->
-        val credentials = call.request.apiKey(apiKeyName, ApiKeyLocation.values().first {  it.location == authLocation })
+        val credentials = call.request.apiKey(apiKeyName, ApiKeyLocation.values().first { it.location == authLocation })
         val principal = credentials?.let { validate(it) }
 
         val cause = when {
