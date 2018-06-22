@@ -15,6 +15,10 @@ package io.swagger.server.apis
 // see https://github.com/ktorio/ktor/issues/288
 
 import com.google.gson.Gson
+import com.mailjet.client.MailjetClient
+import com.mailjet.client.MailjetRequest
+import com.mailjet.client.resource.Contact
+import com.mailjet.client.resource.Email
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode
 import io.ktor.locations.get
@@ -25,8 +29,13 @@ import io.ktor.routing.post
 import io.ktor.routing.route
 import io.swagger.server.Paths
 import io.swagger.server.delete
+import io.swagger.server.models.ErrorResponse
 import io.swagger.server.models.SendMessageRequest
+import io.swagger.server.models.SendResponse
+import org.json.JSONArray
+import org.json.JSONObject
 import org.slf4j.LoggerFactory
+import java.util.*
 
 
 fun Route.DefaultApi() {
@@ -49,9 +58,35 @@ fun Route.DefaultApi() {
         post {
 
             val sendMessageRequest = call.receive<SendMessageRequest>()
-            logger.info("Sending message {}", sendMessageRequest)
 
-            call.respond(HttpStatusCode.NotImplemented)
+            if(sendMessageRequest.type ==SendMessageRequest.Type.email) {
+                logger.info("Sending message {}", sendMessageRequest)
+
+                val recipients = JSONArray()
+                        .put(JSONObject().put(Contact.EMAIL, sendMessageRequest.to[0].reference))
+
+                val email = MailjetRequest(Email.resource)
+                        .property(Email.FROMNAME, sendMessageRequest.from.alias)
+                        .property(Email.FROMEMAIL, "c.cardone@widegroup.ch")
+                        .property(Email.SUBJECT, sendMessageRequest.content.header)
+                        .property(Email.TEXTPART, sendMessageRequest.content.body)
+                        .property(Email.RECIPIENTS, recipients)
+                        .property(Email.MJCUSTOMID, "JAVA-Email")
+
+                val client = MailjetClient("222359b850d02deb0e64be7d954efc52", "ce2ae1f2fdf6f1fcb8f379d5616dd209")
+
+                val response = client.post(email)
+
+                logger.info("Sending response {}", response.data)
+
+                if (200 == response.status) {
+                    call.respond(HttpStatusCode.OK, SendResponse(SendResponse.ResultCode.R0, "OK", UUID.randomUUID().toString()))
+                } else {
+                    call.respond(HttpStatusCode.InternalServerError, ErrorResponse("-1", "KO"))
+                }
+            } else {
+
+            }
         }
     }
 
