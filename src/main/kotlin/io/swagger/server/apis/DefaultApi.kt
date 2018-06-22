@@ -19,6 +19,7 @@ import com.mailjet.client.MailjetClient
 import com.mailjet.client.MailjetRequest
 import com.mailjet.client.resource.Contact
 import com.mailjet.client.resource.Email
+import com.ullink.slack.simpleslackapi.impl.SlackSessionFactory
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode
 import io.ktor.locations.get
@@ -59,7 +60,7 @@ fun Route.DefaultApi() {
 
             val sendMessageRequest = call.receive<SendMessageRequest>()
 
-            if(sendMessageRequest.type ==SendMessageRequest.Type.email) {
+            if (sendMessageRequest.type == SendMessageRequest.Type.email) {
                 logger.info("Sending message {}", sendMessageRequest)
 
                 val recipients = JSONArray()
@@ -85,7 +86,11 @@ fun Route.DefaultApi() {
                     call.respond(HttpStatusCode.InternalServerError, ErrorResponse("-1", "KO"))
                 }
             } else {
-
+                val session = SlackSessionFactory.createWebSocketSlackSession("xoxp-386819753813-387726676423-385984789744-02070eebc26b122225a9a40254725a56")
+                session.connect()
+                val channel = session.findChannelByName("general") //make sure bot is a member of the channel.
+                session.sendMessage(channel, "mmc-mock -> [" + sendMessageRequest.type + "]: " + sendMessageRequest.content.body)
+                call.respond(HttpStatusCode.OK, SendResponse(SendResponse.ResultCode.R0, "OK", UUID.randomUUID().toString()))
             }
         }
     }
