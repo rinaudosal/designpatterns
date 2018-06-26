@@ -89,7 +89,8 @@ fun Route.DefaultApi() {
                 val session = SlackSessionFactory.createWebSocketSlackSession("xoxp-386819753813-387726676423-385984789744-02070eebc26b122225a9a40254725a56")
                 session.connect()
                 val channel = session.findChannelByName("general") //make sure bot is a member of the channel.
-                session.sendMessage(channel, "mmc-mock -> [" + sendMessageRequest.type + "]: " + sendMessageRequest.content.body)
+                var to = if (sendMessageRequest.type == SendMessageRequest.Type.push) sendMessageRequest.to[0].group else sendMessageRequest.to[0].reference
+                session.sendMessage(channel, "mmc-mock -> [" + sendMessageRequest.type + "]->["+ to +"]: " + sendMessageRequest.content.body)
                 call.respond(HttpStatusCode.OK, SendResponse(SendResponse.ResultCode.R0, "OK", UUID.randomUUID().toString()))
             }
         }
