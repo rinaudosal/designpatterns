@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mmc-mock
+  namespace: default
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mmc-mock
+    spec:
+      containers:
+      - name: az4u-app
+        image: eu.gcr.io/az4u-dev/mmc-mock:1.0.3
+        imagePullPolicy: Always
+        ports:
+        - name: web
+          containerPort: 8080
+
