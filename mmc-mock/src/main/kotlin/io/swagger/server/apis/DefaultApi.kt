@@ -24,6 +24,7 @@ import io.ktor.application.call
 import io.ktor.http.HttpStatusCode
 import io.ktor.locations.get
 import io.ktor.request.receive
+import io.ktor.request.receiveText
 import io.ktor.response.respond
 import io.ktor.routing.Route
 import io.ktor.routing.post
@@ -36,6 +37,7 @@ import io.swagger.server.models.SendResponse
 import org.json.JSONArray
 import org.json.JSONObject
 import org.slf4j.LoggerFactory
+import java.nio.charset.Charset
 import java.util.*
 
 
@@ -58,7 +60,13 @@ fun Route.DefaultApi() {
     route("/message/send") {
         post {
 
-            val sendMessageRequest = call.receive<SendMessageRequest>()
+            val sendMessageRequest = if (call.request.headers["Content-Type"]?.contains("charset=utf-8")!!) {
+                call.receive()
+            } else {
+                val receiveText = call.receiveText()
+                val c = SendMessageRequest::class
+                gson.fromJson(String(receiveText.toByteArray(Charset.forName("ISO-8859-1")), Charset.forName("UTF-8")), c.javaObjectType)
+            }
 
             if (sendMessageRequest.type == SendMessageRequest.Type.email) {
                 logger.info("Sending message {}", sendMessageRequest)
@@ -90,7 +98,7 @@ fun Route.DefaultApi() {
                 session.connect()
                 val channel = session.findChannelByName("general") //make sure bot is a member of the channel.
                 var to = if (sendMessageRequest.type == SendMessageRequest.Type.push) sendMessageRequest.to[0].group else sendMessageRequest.to[0].reference
-                session.sendMessage(channel, "mmc-mock -> [" + sendMessageRequest.type + "]->["+ to +"]: " + sendMessageRequest.content.body)
+                session.sendMessage(channel, "mmc-mock -> [" + sendMessageRequest.type + "]->[" + to + "]: " + sendMessageRequest.content.body)
                 call.respond(HttpStatusCode.OK, SendResponse(SendResponse.ResultCode.R0, "OK", UUID.randomUUID().toString()))
             }
         }
