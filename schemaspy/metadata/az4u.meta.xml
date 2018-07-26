@@ -1,0 +1,66 @@
+<schemaMeta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schemaspy.org/xsd/6/schemameta.xsd" >
+    <comments>Database for FundRush Application</comments>
+    <tables>
+        <table name="audit_event" comments="Technical table" />
+        <table name="audit_event_data" comments="Technical table" />
+        <table name="property" comments="Technical table" />
+
+        <!-- HISTORY Table -->
+        <table name="revision_info" comments="Technical table" />
+        <table name="address_hist" comments="Technical table" />
+        <table name="customer_hist" comments="Technical table" />
+        <table name="customer_document_hist" comments="Technical table" />
+        <table name="customer_status_flag_hist" comments="Technical table" />
+        <table name="customer_status_hist" comments="Technical table" />
+        <table name="customer_status_motivation_hist" comments="Technical table" />
+        <table name="customer_survey_answers_hist" comments="Technical table" />
+        <table name="customer_survey_hist" comments="Technical table" />
+        <table name="fund_document_hist" comments="Technical table" />
+        <table name="fund_hist" comments="Technical table" />
+        <table name="fund_nav_hist" comments="Technical table" />
+        <table name="trial_hist" comments="Technical table" />
+        
+        <!-- CUSTOMER TABLES -->
+        <table name="address" comments="Addresses of customer" />
+        <table name="contact_center_message" comments="Messages sent to contact center" />
+        <table name="customer" comments="General data of customer" />
+        <table name="customer_document" comments="Documents of Customer" />
+	<table name="document_file" comments="Sets of files belongs to a specified customer document" />
+        <table name="customer_notification" comments="List of notifications sent to customer" />
+        <table name="customer_risk_profile" comments="Risk profiles acceptable for customer" />
+        <table name="customer_status" comments="Status of customer" />
+        <table name="customer_status_flag" comments="List all flags that can be attached to a non special state" />
+        <table name="customer_status_motivation" comments="Motivation of blocked customer" />
+        <table name="customer_survey" comments="Surveys compiled of customer" />
+        <table name="customer_survey_answers" comments="Answers compiled of customer" />
+        <table name="expected_return" comments="Datas for preview Graph in trial" />
+        <table name="login" comments="Login info of customer" />
+        <table name="fund" comments="Funds available" />
+        <table name="fund_document" comments="Documents related to Fund (KIID, etc.)" />
+        <table name="fund_risk_profile" comments="Risk profiles acceptable for Fund" />
+        <table name="fund_nav" comments="Nav prices of Fund" />
+        <table name="fund_shares" comments="List of prices for different fund" />
+        <table name="pin" comments="Pins of Operation encrypted" />
+        <table name="scheduled_status_notification" comments="Notification scheduled for specific customer" />
+        <table name="survey_answer" comments="List of answers for specific survey" />
+        <table name="survey_answer_lang" comments="Description of Answer in different languages" />
+        <table name="survey_answer_weight" comments="Indicates weight of specific answer" />
+        <table name="survey_questions" comments="Questions for specific survey" />
+        <table name="trial" comments="Customer in trial Mode" />
+        
+        <!-- Domain table -->
+        <table name="city" comments="Domain table of Cities" />
+        <table name="city_lang" comments="Description of Cities in different languages" />
+        <table name="country" comments="Domain table of Countries" />
+        <table name="country_lang" comments="Description of Countries in different languages" />
+        <table name="province" comments="Domain table of Provinces" />
+        <table name="province_lang" comments="Description of Provinces in different languages" />
+        <table name="notification" comments="Domain table of Notifications" />
+        <table name="survey_question" comments="Single question non related to surveys" />
+        <table name="survey_question_lang" comments="Description of Questions in different languages" />
+        <table name="survey_type" comments="Domain table of surveys" />
+        <table name="template_message" comments="Domain table of Templates" />
+        <table name="template_message_lang" comments="Description of Templates in different languages" />
+
+    </tables>
+</schemaMeta>
