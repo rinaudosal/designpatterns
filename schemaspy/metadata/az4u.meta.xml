@@ -4,21 +4,6 @@
         <table name="audit_event" comments="Technical table" />
         <table name="audit_event_data" comments="Technical table" />
         <table name="property" comments="Technical table" />
-
-        <!-- HISTORY Table -->
-        <table name="revision_info" comments="Technical table" />
-        <table name="address_hist" comments="Technical table" />
-        <table name="customer_hist" comments="Technical table" />
-        <table name="customer_document_hist" comments="Technical table" />
-        <table name="customer_status_flag_hist" comments="Technical table" />
-        <table name="customer_status_hist" comments="Technical table" />
-        <table name="customer_status_motivation_hist" comments="Technical table" />
-        <table name="customer_survey_answers_hist" comments="Technical table" />
-        <table name="customer_survey_hist" comments="Technical table" />
-        <table name="fund_document_hist" comments="Technical table" />
-        <table name="fund_hist" comments="Technical table" />
-        <table name="fund_nav_hist" comments="Technical table" />
-        <table name="trial_hist" comments="Technical table" />
         
         <!-- CUSTOMER TABLES -->
         <table name="address" comments="Addresses of customer" />
