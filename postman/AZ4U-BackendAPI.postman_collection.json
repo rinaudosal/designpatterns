@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5b4f09c9-e564-4d54-94e2-a888f3c63123",
+		"_postman_id": "9dcfbcaa-3541-48a7-a524-867b6426d96e",
 		"name": "AZ4U Project - Backend API",
 		"description": "AZ4U Project - Backend API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -320,7 +320,151 @@
 			"description": "Folder for common-data",
 			"item": [
 				{
-					"name": "Fund shares",
+					"name": "Available educations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://35.205.224.163/api/common-data/education?lang={{lang}}",
+							"protocol": "http",
+							"host": [
+								"35",
+								"205",
+								"224",
+								"163"
+							],
+							"path": [
+								"api",
+								"common-data",
+								"education"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "{{lang}}"
+								}
+							]
+						},
+						"description": "Return the list of available educations"
+					},
+					"response": []
+				},
+				{
+					"name": "Available employment sectors",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://35.205.224.163/api/common-data/employment-sector?lang={{lang}}",
+							"protocol": "http",
+							"host": [
+								"35",
+								"205",
+								"224",
+								"163"
+							],
+							"path": [
+								"api",
+								"common-data",
+								"employment-sector"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "{{lang}}"
+								}
+							]
+						},
+						"description": "Return the list of available employment sectors"
+					},
+					"response": []
+				},
+				{
+					"name": "Available investment purposes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://35.205.224.163/api/common-data/investment-purpose?lang={{lang}}",
+							"protocol": "http",
+							"host": [
+								"35",
+								"205",
+								"224",
+								"163"
+							],
+							"path": [
+								"api",
+								"common-data",
+								"investment-purpose"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "{{lang}}"
+								}
+							]
+						},
+						"description": "Return the list of available investment purposes"
+					},
+					"response": []
+				},
+				{
+					"name": "Available jobs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://35.205.224.163/api/common-data/job?lang={{lang}}",
+							"protocol": "http",
+							"host": [
+								"35",
+								"205",
+								"224",
+								"163"
+							],
+							"path": [
+								"api",
+								"common-data",
+								"job"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "{{lang}}"
+								}
+							]
+						},
+						"description": "Return the list of available jobs"
+					},
+					"response": []
+				},
+				{
+					"name": "Cities of the province",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -334,7 +478,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/fund-shares",
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/city?provinceCode={{provinceCode}}&lang={{lang}}",
 							"protocol": "{{protocol}}",
 							"host": [
 								"{{host}}"
@@ -343,10 +487,20 @@
 							"path": [
 								"api",
 								"common-data",
-								"fund-shares"
+								"city"
+							],
+							"query": [
+								{
+									"key": "provinceCode",
+									"value": "{{provinceCode}}"
+								},
+								{
+									"key": "lang",
+									"value": "{{lang}}"
+								}
 							]
 						},
-						"description": "Fund shares for simulation and investment purposes"
+						"description": "Return the list of cities of the province"
 					},
 					"response": []
 				},
@@ -388,6 +542,139 @@
 							]
 						},
 						"description": "List of country"
+					},
+					"response": []
+				},
+				{
+					"name": "Citizenships available",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://35.205.224.163/api/common-data/citizenship?lang={{lang}}",
+							"protocol": "http",
+							"host": [
+								"35",
+								"205",
+								"224",
+								"163"
+							],
+							"path": [
+								"api",
+								"common-data",
+								"citizenship"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "{{lang}}"
+								}
+							]
+						},
+						"description": "Returns the list of Citizenships"
+					},
+					"response": []
+				},
+				{
+					"name": "Fund shares",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/fund-shares",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"common-data",
+								"fund-shares"
+							]
+						},
+						"description": "Fund shares for simulation and investment purposes"
+					},
+					"response": []
+				},
+				{
+					"name": "Identity Document types",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://35.205.224.163/api/common-data/identity-documents?lang={{lang}}",
+							"protocol": "http",
+							"host": [
+								"35",
+								"205",
+								"224",
+								"163"
+							],
+							"path": [
+								"api",
+								"common-data",
+								"identity-documents"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "{{lang}}"
+								}
+							]
+						},
+						"description": "Document types for user identification"
+					},
+					"response": []
+				},
+				{
+					"name": "Mobile application properties",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://35.205.224.163/api/common-data/properties",
+							"protocol": "http",
+							"host": [
+								"35",
+								"205",
+								"224",
+								"163"
+							],
+							"path": [
+								"api",
+								"common-data",
+								"properties"
+							]
+						},
+						"description": "List of mobile application properties"
 					},
 					"response": []
 				},
@@ -462,58 +749,52 @@
 						"description": "List of provinces for the country"
 					},
 					"response": []
-				},
+				}
+			]
+		},
+		{
+			"name": "survey",
+			"description": "Folder for survey",
+			"item": [
 				{
-					"name": "Cities of the province",
+					"name": "View the aml survey for the specified customer",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
 								"value": "application/json"
+							},
+							{
+								"key": "AZ4U-Client-Id",
+								"value": "{{AZ4U-Client-Id}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"url": {
-							"raw": "{{protocol}}://{{host}}:{{port}}/api/common-data/city?provinceCode={{provinceCode}}&lang={{lang}}",
-							"protocol": "{{protocol}}",
+							"raw": "http://35.205.224.163/api/survey/aml/view",
+							"protocol": "http",
 							"host": [
-								"{{host}}"
+								"35",
+								"205",
+								"224",
+								"163"
 							],
-							"port": "{{port}}",
 							"path": [
 								"api",
-								"common-data",
-								"city"
-							],
-							"query": [
-								{
-									"key": "provinceCode",
-									"value": "{{provinceCode}}"
-								},
-								{
-									"key": "lang",
-									"value": "{{lang}}"
-								}
+								"survey",
+								"aml",
+								"view"
 							]
 						},
-						"description": "Return the list of cities of the province"
+						"description": "Returns the compiled aml survey for the specified customer"
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "portfolio",
-			"description": "Folder for portfolio",
-			"item": [
+				},
 				{
-					"name": "Portfolio of customer",
+					"name": "Sends the answers for the specified aml survey",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
@@ -529,25 +810,25 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://portfolio/view",
+							"raw": "http://35.205.224.163/api/survey/aml/submit",
 							"protocol": "http",
 							"host": [
-								"portfolio"
+								"35",
+								"205",
+								"224",
+								"163"
 							],
 							"path": [
-								"view"
+								"api",
+								"survey",
+								"aml",
+								"submit"
 							]
 						},
-						"description": "Return the portfolio of the customer"
+						"description": "Allows to submit the answers for the specified aml survey"
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "survey",
-			"description": "Folder for survey",
-			"item": [
+				},
 				{
 					"name": "Send the answers modified for the specified survey",
 					"request": {
