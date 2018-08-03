@@ -1,51 +1,68 @@
 <schemaMeta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schemaspy.org/xsd/6/schemameta.xsd" >
     <comments>Database for FundRush Application</comments>
     <tables>
-        <table name="audit_event" comments="Technical table" />
-        <table name="audit_event_data" comments="Technical table" />
-        <table name="property" comments="Technical table" />
+        <table name="audit_event" comments="Table for Audit management" />
+        <table name="audit_event_data" comments="Table for Audit management" />
+        <table name="property" comments="Property data managed from application" />
         
         <!-- CUSTOMER TABLES -->
-        <table name="address" comments="Addresses of customer" />
+        <table name="address" comments="Addresses of customers. Table have History" />
         <table name="contact_center_message" comments="Messages sent to contact center" />
-        <table name="customer" comments="General data of customer" />
-        <table name="customer_document" comments="Documents of Customer" />
-	<table name="document_file" comments="Sets of files belongs to a specified customer document" />
-        <table name="customer_notification" comments="List of notifications sent to customer" />
-        <table name="customer_risk_profile" comments="Risk profiles acceptable for customer" />
-        <table name="customer_status" comments="Status of customer" />
-        <table name="customer_status_flag" comments="List all flags that can be attached to a non special state" />
-        <table name="customer_status_motivation" comments="Motivation of blocked customer" />
-        <table name="customer_survey" comments="Surveys compiled of customer" />
-        <table name="customer_survey_answers" comments="Answers compiled of customer" />
-        <table name="expected_return" comments="Datas for preview Graph in trial" />
-        <table name="login" comments="Login info of customer" />
-        <table name="fund" comments="Funds available" />
-        <table name="fund_document" comments="Documents related to Fund (KIID, etc.)" />
-        <table name="fund_risk_profile" comments="Risk profiles acceptable for Fund" />
-        <table name="fund_nav" comments="Nav prices of Fund" />
-        <table name="fund_shares" comments="List of prices for different fund" />
-        <table name="pin" comments="Pins of Operation encrypted" />
-        <table name="scheduled_status_notification" comments="Notification scheduled for specific customer" />
-        <table name="survey_answer" comments="List of answers for specific survey" />
+        <table name="customer" comments="General data of customers. Table have History" />
+        <table name="customer_document" comments="Documents of Customers. Table have History" />        
+	<table name="document_file" comments="Additional data of Documents for Customers. Table have History" />
+        <table name="customer_notification" comments="List of notifications sent to customers" />
+        <table name="customer_risk_profile" comments="Risk profiles acceptable for customers" />
+        <table name="customer_status" comments="Status of customers. Table have History" />
+        <table name="customer_status_flag" comments="List all flags that can be attached to a non special state. Table have History" />
+        <table name="customer_status_motivation" comments="Motivation of blocked customers. Table have History" />
+        <table name="customer_survey" comments="Surveys compiled of customers. Table have History" />
+        <table name="customer_survey_answers" comments="Answers compiled of customers. Table have History" />
+        <table name="expected_return" comments="Expected return of investment" />
+        <table name="login" comments="Login info of customers" />
+        <table name="fund" comments="Funds availables. Table have History" />
+        <table name="fund_document" comments="Documents related to Funds (KIID, etc.). Table have History" />
+        <table name="fund_risk_profile" comments="List of Fund Risk profiles" />
+        <table name="fund_nav" comments="Nav prices of Funds. Table have History" />
+        <table name="fund_shares" comments="List of default investment values" />
+        <table name="pin" comments="Table to manage pins" />
+        <table name="scheduled_status_notification" comments="Notification scheduled for customer in specific Status" />
+        <table name="survey_answer" comments="List of answers for specific surveys" />
+        <table name="aml_survey" comments="Aml Survey compiled of customers. Table have History" />
         <table name="survey_answer_lang" comments="Description of Answer in different languages" />
-        <table name="survey_answer_weight" comments="Indicates weight of specific answer" />
+        <table name="survey_answer_weight" comments="Weight for specific answers" />
         <table name="survey_questions" comments="Questions for specific survey" />
-        <table name="trial" comments="Customer in trial Mode" />
+        <table name="trial" comments="Customer trial info. Table have History" />
         
         <!-- Domain table -->
+        <table name="education" comments="Domain table of Education" />
+        <table name="education_lang" comments="Description of Education in different languages" />
+        <table name="employment_sector" comments="Domain table of Employment sector" />
+        <table name="employment_sector_lang" comments="Description of Employment sector in different languages" />
+        <table name="investment_purpose" comments="Domain table of Investment purpose" />
+        <table name="investment_purpose_lang" comments="Description of Investment purpose in different languages" />
+        <table name="job" comments="Domain table of Job" />
+        <table name="job_lang" comments="Description of Job in different languages" />
+        <table name="zip_code" comments="Domain table of Zip codes" />
         <table name="city" comments="Domain table of Cities" />
         <table name="city_lang" comments="Description of Cities in different languages" />
+        <table name="citizenship" comments="Domain table of citizenship" />
+        <table name="citizenship_lang" comments="Description of citizenship in different languages" />
         <table name="country" comments="Domain table of Countries" />
         <table name="country_lang" comments="Description of Countries in different languages" />
         <table name="province" comments="Domain table of Provinces" />
         <table name="province_lang" comments="Description of Provinces in different languages" />
         <table name="notification" comments="Domain table of Notifications" />
-        <table name="survey_question" comments="Single question non related to surveys" />
+        <table name="survey_question" comments="Domain table of Question" />
         <table name="survey_question_lang" comments="Description of Questions in different languages" />
         <table name="survey_type" comments="Domain table of surveys" />
         <table name="template_message" comments="Domain table of Templates" />
         <table name="template_message_lang" comments="Description of Templates in different languages" />
+        <table name="identity_document" comments="Domain table of Identity Documents" />
+        <table name="identity_document_lang" comments="Description of Identity Documents in different languages" />
+        <table name="issue_authority" comments="Domain table of Issue Authority" />
+        <table name="issue_authority_lang" comments="Description of Issue Authority in different languages" />
+        <table name="issue_authority_documents" comments="Chain table for many relation issue_authority and identity_document" />
 
     </tables>
 </schemaMeta>
