@@ -20,6 +20,8 @@
         <table name="customer_survey_answers" comments="Answers compiled of customers. Table have History" />
         <table name="expected_return" comments="Expected return of investment" />
         <table name="login" comments="Login info of customers" />
+        <table name="fatca_crs_survey" comments="Survey info of fatca survey submitted. Table have history" />
+        <table name="fatca_crs_fiscal_info" comments="Fiscal info of fatca survey submitted. Table have history" />
         <table name="fund" comments="Funds availables. Table have History" />
         <table name="fund_document" comments="Documents related to Funds (KIID, etc.). Table have History" />
         <table name="fund_risk_profile" comments="List of Fund Risk profiles" />
@@ -29,16 +31,23 @@
         <table name="scheduled_status_notification" comments="Notification scheduled for customer in specific Status" />
         <table name="survey_answer" comments="List of answers for specific surveys" />
         <table name="aml_survey" comments="Aml Survey compiled of customers. Table have History" />
+        <table name="pep_survey" comments="Pep Survey compiled of customers. Table have History" />
         <table name="survey_answer_lang" comments="Description of Answer in different languages" />
         <table name="survey_answer_weight" comments="Weight for specific answers" />
         <table name="survey_questions" comments="Questions for specific survey" />
         <table name="trial" comments="Customer trial info. Table have History" />
         
         <!-- Domain table -->
+        <table name="income_bracket" comments="Domain table of Income brackets" />
+        <table name="income_bracket_lang" comments="Description of Income brackets in different languages" />
+        <table name="contact_center_category" comments="Domain table of Contact center categories" />
+        <table name="contact_center_category_lang" comments="Description of Contact center categories in different languages" />
         <table name="education" comments="Domain table of Education" />
         <table name="education_lang" comments="Description of Education in different languages" />
         <table name="employment_sector" comments="Domain table of Employment sector" />
         <table name="employment_sector_lang" comments="Description of Employment sector in different languages" />
+        <table name="additional_employment_sector" comments="Domain table of Additional Employment sector" />
+        <table name="additional_employment_sector_lang" comments="Description of Additional Employment sector in different languages" />
         <table name="investment_purpose" comments="Domain table of Investment purpose" />
         <table name="investment_purpose_lang" comments="Description of Investment purpose in different languages" />
         <table name="job" comments="Domain table of Job" />
