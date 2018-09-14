@@ -7,6 +7,7 @@
         
         <!-- CUSTOMER TABLES -->
         <table name="address" comments="Addresses of customers. Table have History" />
+        <table name="bank_account" comments="Bank accounts of customers. Table have History" />
         <table name="contact_center_message" comments="Messages sent to contact center" />
         <table name="customer" comments="General data of customers. Table have History" />
         <table name="customer_document" comments="Documents of Customers. Table have History" />        
@@ -72,6 +73,7 @@
         <table name="issue_authority" comments="Domain table of Issue Authority" />
         <table name="issue_authority_lang" comments="Description of Issue Authority in different languages" />
         <table name="issue_authority_documents" comments="Chain table for many relation issue_authority and identity_document" />
-
+        <table name="signature_text" comments="Common table for Signature Texts. Table have history" />
+        <table name="signature_document" comments="Document table linked to Signature Texts. Table have history" />
     </tables>
 </schemaMeta>
