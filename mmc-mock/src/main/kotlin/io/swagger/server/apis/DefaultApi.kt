@@ -76,7 +76,7 @@ fun Route.DefaultApi() {
 
                 val email = MailjetRequest(Email.resource)
                         .property(Email.FROMNAME, sendMessageRequest.from.alias)
-                        .property(Email.FROMEMAIL, "c.cardone@widegroup.ch")
+                        .property(Email.FROMEMAIL, sendMessageRequest.from.reference)
                         .property(Email.SUBJECT, sendMessageRequest.content.header)
                         .property(Email.TEXTPART, sendMessageRequest.content.body)
                         .property(Email.RECIPIENTS, recipients)

@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: az4u-app
-        image: eu.gcr.io/az4u-dev/mmc-mock:1.0.3
+        image: eu.gcr.io/az4u-dev/mmc-mock:1.0.4
         imagePullPolicy: Always
         ports:
         - name: web
