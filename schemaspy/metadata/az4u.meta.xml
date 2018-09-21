@@ -9,9 +9,10 @@
         <table name="address" comments="Addresses of customers. Table have History" />
         <table name="bank_account" comments="Bank accounts of customers. Table have History" />
         <table name="contact_center_message" comments="Messages sent to contact center" />
+        <table name="contract_documents" comments="Documents checks for digital signatures" />
         <table name="customer" comments="General data of customers. Table have History" />
         <table name="customer_document" comments="Documents of Customers. Table have History" />        
-	<table name="document_file" comments="Additional data of Documents for Customers. Table have History" />
+	    <table name="document_file" comments="Additional data of Documents for Customers. Table have History" />
         <table name="customer_notification" comments="List of notifications sent to customers" />
         <table name="customer_risk_profile" comments="Risk profiles acceptable for customers" />
         <table name="customer_status" comments="Status of customers. Table have History" />
@@ -37,7 +38,7 @@
         <table name="survey_answer_weight" comments="Weight for specific answers" />
         <table name="survey_questions" comments="Questions for specific survey" />
         <table name="trial" comments="Customer trial info. Table have History" />
-        
+
         <!-- Domain table -->
         <table name="income_bracket" comments="Domain table of Income brackets" />
         <table name="income_bracket_lang" comments="Description of Income brackets in different languages" />
@@ -47,6 +48,8 @@
         <table name="education_lang" comments="Description of Education in different languages" />
         <table name="employment_sector" comments="Domain table of Employment sector" />
         <table name="employment_sector_lang" comments="Description of Employment sector in different languages" />
+        <table name="fund_origin" comments="Domain table of Customer capital origin" />
+        <table name="fund_origin_lang" comments="Description of Customer capital origin in different languages" />
         <table name="additional_employment_sector" comments="Domain table of Additional Employment sector" />
         <table name="additional_employment_sector_lang" comments="Description of Additional Employment sector in different languages" />
         <table name="investment_purpose" comments="Domain table of Investment purpose" />
@@ -63,6 +66,8 @@
         <table name="province" comments="Domain table of Provinces" />
         <table name="province_lang" comments="Description of Provinces in different languages" />
         <table name="notification" comments="Domain table of Notifications" />
+        <table name="payment_method" comments="Domain table of Payment method" />
+        <table name="payment_method_lang" comments="Description of Payment method in different languages" />
         <table name="survey_question" comments="Domain table of Question" />
         <table name="survey_question_lang" comments="Description of Questions in different languages" />
         <table name="survey_type" comments="Domain table of surveys" />
