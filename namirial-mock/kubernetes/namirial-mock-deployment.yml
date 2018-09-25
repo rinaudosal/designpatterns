@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: namirial-mock
+  namespace: default
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: namirial-mock
+    spec:
+      containers:
+      - name: namirial-app
+        image: eu.gcr.io/az4u-dev/namirial-mock:1.0.0
+        imagePullPolicy: Always
+        ports:
+        - name: web
+          containerPort: 8080
+
