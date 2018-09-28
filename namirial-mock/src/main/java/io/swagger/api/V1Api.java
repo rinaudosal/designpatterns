@@ -39,8 +39,7 @@ public interface V1Api {
         @ApiResponse(code = 400, message = "An error occurred during the enrollment of certificate. Check that the data entered is correct.", response = ErrorResponse.class),
         @ApiResponse(code = 500, message = "Internal server error", response = ErrorResponse.class) })
     @RequestMapping(value = "/v1/certificates/enrollment/{requestId}/{holderId}/{otpCode}",
-        produces = { "application/json" }, 
-        consumes = { "application/json" },
+        produces = { "application/json" },
         method = RequestMethod.GET)
     ResponseEntity<EnrollSuspendedOUT> enrollSuspendedUsingGET(@ApiParam(value = "requestId",required=true) @PathVariable("requestId") String requestId,@ApiParam(value = "holderId",required=true) @PathVariable("holderId") Integer holderId,@ApiParam(value = "otpCode",required=true) @PathVariable("otpCode") String otpCode);
 
