@@ -60,8 +60,9 @@ public class V1ApiController implements V1Api {
             enrollSuspendedOUT.setOtpId(otpId.intValue());
             enrollSuspendedOUT.setEnrolledCertificate(Base64.encodeBase64String(bytes));
 
-
-            if ("ALWAYS_VALID".equals(otpCode) || (otpMap.containsKey(holderId) && otpMap.get(holderId).toString().equals(otpCode))) {
+            if ("ALWAYS_VALID".equals(otpCode) || "111111" == otpCode) {
+                return new ResponseEntity<EnrollSuspendedOUT>(enrollSuspendedOUT, HttpStatus.OK);
+            } else if (otpMap.containsKey(holderId.longValue()) && otpMap.get(holderId.longValue()).toString().equals(otpCode)) {
                 return new ResponseEntity<EnrollSuspendedOUT>(enrollSuspendedOUT, HttpStatus.OK);
             } else {
                 throw new RuntimeException("Wrong otp");
