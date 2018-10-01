@@ -9,7 +9,7 @@
         <table name="address" comments="Addresses of customers. Table have History" />
         <table name="bank_account" comments="Bank accounts of customers. Table have History" />
         <table name="contact_center_message" comments="Messages sent to contact center" />
-        <table name="contract_documents" comments="Documents checks for digital signatures" />
+        <table name="contract_documents" comments="Contractual acceptation between customer and Azimut. Note: the field documentContent contains document byte array as received by Namirial" />
         <table name="customer" comments="General data of customers. Table have History" />
         <table name="customer_document" comments="Documents of Customers. Table have History" />        
 	    <table name="document_file" comments="Additional data of Documents for Customers. Table have History" />
