@@ -9,7 +9,23 @@
         <table name="address" comments="Addresses of customers. Table have History" />
         <table name="bank_account" comments="Bank accounts of customers. Table have History" />
         <table name="contact_center_message" comments="Messages sent to contact center" />
-        <table name="contract_documents" comments="Contractual acceptation between customer and Azimut. Note: the field documentContent contains document byte array as received by Namirial" />
+        <table name="contract_documents" comments="Contractual acceptation between customer and Azimut." >
+            <column name="phone_prefix" comments="Phone prefix of the customer involved in otp confirmation"/>
+            <column name="phone_number" comments="Phone number of the customer involved in otp confirmation"/>
+            <column name="customer_id" comments="The foreign key of the customer"/>
+            <column name="accept_general_conditions" comments="Acceptance flag for general conditions"/>
+            <column name="confirm_self_certification_and_subscription" comments="Acceptance flag for self ceritification and subcription"/>
+            <column name="accept_oppress_clauses" comments="Acceptance flag for oppress clauses"/>
+            <column name="accept_privacy_policy" comments="Acceptance flag for privacy policy"/>
+            <column name="created_date" comments="Creation date of the record"/>
+            <column name="last_modified_date" comments="Update date of the record"/>
+            <column name="request_id" comments="The id retrieved by Namirial to identify a single otp request"/>
+            <column name="compilation_date" comments="The timestamp into which customer sent successfully otp confirmation to Namirial"/>
+            <column name="otp_id" comments="Id retrieved by Namirial to identify the otp token"/>
+            <column name="device_number" comments="The device number retrieved by Namirial"/>
+            <column name="document_mime_type" comments="The document type retrieved by Namirial"/>
+            <column name="document_content" comments="The contract document as retrieved by Namirial persisted in a clob field type how byte array"/>
+        </table>
         <table name="customer" comments="General data of customers. Table have History" />
         <table name="customer_document" comments="Documents of Customers. Table have History" />        
 	    <table name="document_file" comments="Additional data of Documents for Customers. Table have History" />
