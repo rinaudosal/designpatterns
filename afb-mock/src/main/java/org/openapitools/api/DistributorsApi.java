@@ -243,15 +243,30 @@ public interface DistributorsApi {
         consumes = {"application/json"},
         method = RequestMethod.POST)
     default ResponseEntity<OrderAndMessages> addOrderUsingPOST(@ApiParam(value = "The Id of the {Distributor}", required = true) @PathVariable("distributorId") Long distributorId, @ApiParam(value = "The Id of the {Subdistributor}", required = true) @PathVariable("subdistributorId") Long subdistributorId, @ApiParam(value = "The Id of the {Contract}", required = true) @PathVariable("contractId") Long contractId, @ApiParam(value = "body", required = true) @Valid @RequestBody OrderAndSignature orderAndSignature) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    ApiUtil.setExampleResponse(request, "application/json", "{  \"messages\" : [ {    \"errorCode\" : \"errorCode\",    \"changedValue\" : \"changedValue\",    \"status\" : \"OK\"  }, {    \"errorCode\" : \"errorCode\",    \"changedValue\" : \"changedValue\",    \"status\" : \"OK\"  } ],  \"order\" : {    \"orderTypeCode\" : \"orderTypeCode\",    \"orderDateData\" : {      \"orderedDate\" : \"2000-01-23T04:56:07.000+00:00\",      \"settlementDate\" : \"2000-01-23T04:56:07.000+00:00\"    },    \"depositaryId\" : 6,    \"dealingInstrument\" : {      \"id\" : \"id\",      \"label\" : \"label\",      \"url\" : \"url\"    },    \"orderAmountData\" : {      \"awardedGrossAmount\" : 5.63737665663332876420099637471139430999755859375,      \"awardedGrossAmountInLocalCurrency\" : 2.3021358869347654518833223846741020679473876953125,      \"requestedGrossAmount\" : 7.061401241503109105224211816675961017608642578125    },    \"orderContractData\" : {      \"contractExternalReference\" : \"contractExternalReference\",      \"contractAccount\" : {        \"assetAccountCode\" : \"assetAccountCode\",        \"currentAccountCode\" : \"currentAccountCode\"      }    },    \"orderSettingsData\" : {      \"omnibus\" : true,      \"dealingCurrencyPolicy\" : \"INSTRUMENT_CURRENCY\"    },    \"price\" : {      \"date\" : \"2000-01-23T04:56:07.000+00:00\",      \"priceTypeCode\" : \"priceTypeCode\",      \"currencyCode\" : \"currencyCode\",      \"value\" : 6.02745618307040320615897144307382404804229736328125    },    \"id\" : 5,    \"subdistributorId\" : 4,    \"dealingFundHouseId\" : 0,    \"orderEtfData\" : {      \"brokerId\" : 9,      \"etfDealingData\" : {        \"launchPrice\" : 2.027123023002321833274663731572218239307403564453125,        \"pendingShares\" : 4.1456080298839363962315474054776132106781005859375,        \"dealingTypeCode\" : \"dealingTypeCode\",        \"validityPeriodCode\" : \"validityPeriodCode\",        \"executeShares\" : 3.61607674925191080461672754609026014804840087890625,        \"expirationDate\" : \"2000-01-23T04:56:07.000+00:00\"      },      \"stockExchangeId\" : \"stockExchangeId\"    },    \"comments\" : \"comments\",    \"productId\" : 1,    \"distributorId\" : 1,    \"paymentCurrencyCode\" : \"paymentCurrencyCode\",    \"dealingInstrumentType\" : \"FUND\",    \"orderSharesData\" : {      \"requestedShares\" : 7.4577447736837658709418974467553198337554931640625    },    \"localCurrencyCode\" : \"localCurrencyCode\",    \"externalReference\" : \"externalReference\",    \"orderFeeData\" : {      \"feePerDealingInstrument\" : 7.3862819483858839220147274318151175975799560546875,      \"secondOrderFeePercentage\" : 6.8468526983526398765889098285697400569915771484375,      \"secondOrderFeeAmount\" : 1.489415909854170383397331534069962799549102783203125,      \"firstOrderFeePercentage\" : 1.024645700144157789424070870154537260532379150390625,      \"firstOrderFeeAmount\" : 1.231513536777255612975068288506008684635162353515625    },    \"orderItalianRetailMarketData\" : {      \"feeChargeOption\" : \"FRONTLOAD\"    },    \"orderSwitchData\" : {      \"associatedOrderExternalReference\" : \"associatedOrderExternalReference\",      \"associatedDealingInstrument\" : {        \"id\" : \"id\",        \"label\" : \"label\",        \"url\" : \"url\"      },      \"associatedDealingInstrumentType\" : \"FUND\",      \"associatedCurrencyCode\" : \"associatedCurrencyCode\"    },    \"orderStatusCode\" : \"orderStatusCode\",    \"currencyCode\" : \"currencyCode\"  }}");
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+        Order order = orderAndSignature.getOrder();
+
+        OrderAndMessages orderAndMessages = new OrderAndMessages();
+        orderAndMessages.setOrder(order);
+
+        if (order.getId() == null) {
+            Random random = new SecureRandom(distributorId.toString().getBytes());
+
+            order.setId(random.nextLong());
+            order.getDealingInstrument().setLabel(RandomStringUtils.random(10));
+            order.getDealingInstrument().setUrl(RandomStringUtils.random(10));
+            order.getOrderAmountData().setAwardedGrossAmount(order.getOrderAmountData().getRequestedGrossAmount());
+            order.getOrderAmountData().setAwardedGrossAmountInLocalCurrency(order.getOrderAmountData().getRequestedGrossAmount());
+
+            OffsetDateTime now = OffsetDateTime.now();
+            order.getOrderDateData().setOrderedDate(now);
+            order.getOrderDateData().setSettlementDate(now);
+
+        }
+        Message message = new Message();
+        message.setStatus(Message.StatusEnum.OK);
+        orderAndMessages.setMessages(Collections.singletonList(message));
+        return ResponseEntity.ok(orderAndMessages);
 
     }
 
