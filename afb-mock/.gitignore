@@ -99,3 +99,4 @@ fabric.properties
 .idea
 /.openapi-generator/
 /openapi-spring.iml
+/afb-mock.iml

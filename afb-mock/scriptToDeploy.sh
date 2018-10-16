@@ -8,7 +8,7 @@ echo Remember to update afb-mock-deployment.yml with new version
 echo Insert new maven version, actual version $version?
 read newVersion
 # update pom with new version
-mvn versions:set -DnewVersion=$newVersion-SNAPSHOT
+mvn versions:set -DnewVersion=$newVersion
 
 # create new jar
 mvn clean package
