@@ -26,6 +26,37 @@
             <column name="document_mime_type" comments="The document type retrieved by Namirial"/>
             <column name="document_content" comments="The contract document as retrieved by Namirial persisted in a clob field type how byte array"/>
         </table>
+        <table name="portfolio" comments="Data of Fund subscribed. Table have History" />
+        <table name="namirial_otp_request" comments="Table contain otp request sent. Table have History" />	
+	<table name="fund_order" comments="Table contain order data of fund submitted. Table have History">
+		<column name="amount" comments="Each order have amount, when orders is executed increase or decrease portfolio amount. Note: for Total refund amount is null."/>
+		<column name="user_risk_confirmation" comments="User has accepted risk for fund with higher risk profile"/>
+		<column name="afb_terms_of_service" comments="User has accepted AFB terms"/>		
+		<column name="kiid_accepted" comments="User has viewed fund kiid"/>		
+		<column name="confirm_self_certification_and_subscription" comments="User has confirmed fund subscription"/>		
+		<column name="accept_oppress_clauses" comments="User has accepted oppress clauses"/>		
+		<column name="accept_privacy_policy" comments="User has accepted privacy policy"/>		
+		<column name="type" comments="order type (SUBSCRIPTION, TOTAL_REFUND etc..."/>		
+		<column name="transaction_id" comments="Logical id of orders"/>		
+		<column name="status" comments="Order status (INSERTED,EXECUTED etc..)"/>		
+		<column name="payment_method_id" comments="Foreign key of payment method table"/>		
+		<column name="fund_origin_id" comments="Foreign key of fund origin table"/>		
+		<column name="namirial_otp_request_id" comments="Foreign key of namirial table"/>		
+		<column name="namirial_otp_request_id" comments="Foreign key of namirial table"/>		
+		<column name="namirial_otp_request_id" comments="Foreign key of namirial table"/>		
+		<column name="portfolio_id" comments="Portfolio id"/>		
+		<column name="afb_id" comments="Id of order received from AFB"/>		
+		<column name="transmission_date" comments="Trasmission date received from AFB"/>		
+		<column name="settlement_date" comments="Settlement date received from AFB"/>		
+		<column name="reconciliation_date" comments="Date when Backoffice has reconciled order"/>		
+		<column name="fund_source" comments="Fund sorce. Used for switch order"/>		
+		<column name="fund_destination" comments="Fund destination of order"/>				
+		<column name="created_date" comments="Technical date"/>		
+		<column name="last_modified_date" comments="Technical date"/>	
+	</table>
+	<table name="fund_order_iban_payment" comments="Table contain payment data with iban type of orders. Table have History" />
+	<table name="customer_investor_profile" comments="Table contain aml risk profile info. Table have History" />
+
         <table name="customer" comments="General data of customers. Table have History" />
         <table name="customer_document" comments="Documents of Customers. Table have History" />        
 	    <table name="document_file" comments="Additional data of Documents for Customers. Table have History" />
