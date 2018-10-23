@@ -99,8 +99,7 @@ public interface DistributorsApi {
         Random random = new SecureRandom(distributorId.toString().getBytes());
 
         Contract contract = contractAndSignature.getContract();
-        contract.setId(random.nextLong());
-
+        contract.setId(Math.abs(random.nextLong()));
         return ResponseEntity.status(201).body(contract);
     }
 
@@ -252,9 +251,9 @@ public interface DistributorsApi {
         if (order.getId() == null) {
             Random random = new SecureRandom(distributorId.toString().getBytes());
 
-            order.setId(random.nextLong());
-            order.getDealingInstrument().setLabel(RandomStringUtils.random(10));
-            order.getDealingInstrument().setUrl(RandomStringUtils.random(10));
+            order.setId(Math.abs(random.nextLong()));
+            order.getDealingInstrument().setLabel(RandomStringUtils.randomAlphabetic(10));
+            order.getDealingInstrument().setUrl(RandomStringUtils.randomAlphabetic(10));
             order.getOrderAmountData().setAwardedGrossAmount(order.getOrderAmountData().getRequestedGrossAmount());
             order.getOrderAmountData().setAwardedGrossAmountInLocalCurrency(order.getOrderAmountData().getRequestedGrossAmount());
 
@@ -5480,9 +5479,9 @@ public interface DistributorsApi {
         OrderAndMessages orderAndMessages = new OrderAndMessages();
         orderAndMessages.setOrder(order);
 
-        order.setId(random.nextLong());
-        order.getDealingInstrument().setLabel(RandomStringUtils.random(10));
-        order.getDealingInstrument().setUrl(RandomStringUtils.random(10));
+        order.setId(Math.abs(random.nextLong()));
+        order.getDealingInstrument().setLabel(RandomStringUtils.randomAlphabetic(10));
+        order.getDealingInstrument().setUrl(RandomStringUtils.randomAlphabetic(10));
         order.getOrderAmountData().setAwardedGrossAmount(order.getOrderAmountData().getRequestedGrossAmount());
         order.getOrderAmountData().setAwardedGrossAmountInLocalCurrency(order.getOrderAmountData().getRequestedGrossAmount());
 
