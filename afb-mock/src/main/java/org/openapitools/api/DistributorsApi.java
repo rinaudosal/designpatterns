@@ -23,6 +23,7 @@ import javax.validation.Valid;
 
 import java.security.SecureRandom;
 import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -2402,15 +2403,62 @@ public interface DistributorsApi {
         produces = {"application/json"},
         method = RequestMethod.GET)
     default ResponseEntity<Transaction> getTransactionByIdUsingGET(@ApiParam(value = "The Id of the {Distributor}", required = true) @PathVariable("distributorId") Long distributorId, @ApiParam(value = "The Id of the {Transaction}", required = true) @PathVariable("transactionId") Long transactionId) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    ApiUtil.setExampleResponse(request, "application/json", "{  \"transactionDateData\" : {    \"confirmationDate\" : \"2000-01-23T04:56:07.000+00:00\",    \"orderedDate\" : \"2000-01-23T04:56:07.000+00:00\",    \"settlementDate\" : \"2000-01-23T04:56:07.000+00:00\",    \"cutoffDate\" : \"2000-01-23T04:56:07.000+00:00\",    \"cancellationDate\" : \"2000-01-23T04:56:07.000+00:00\"  },  \"depositaryId\" : 5,  \"transactionComments\" : \"transactionComments\",  \"dealingInstrument\" : {    \"id\" : \"id\",    \"label\" : \"label\",    \"url\" : \"url\"  },  \"transactionTypeCode\" : \"transactionTypeCode\",  \"transactionSwitchData\" : {    \"associatedTransaction\" : {      \"id\" : \"id\",      \"label\" : \"label\",      \"url\" : \"url\"    },    \"associatedDealingInstrument\" : {      \"id\" : \"id\",      \"label\" : \"label\",      \"url\" : \"url\"    },    \"associatedDealingInstrumentType\" : \"FUND\",    \"switchExchangeRate\" : 8.863729185622826634016746538691222667694091796875,    \"associatedTransactionExternalReference\" : \"associatedTransactionExternalReference\",    \"associatedCurrencyCode\" : \"associatedCurrencyCode\"  },  \"transactionAmountData\" : {    \"awardedGrossAmount\" : 4.1456080298839363962315474054776132106781005859375,    \"requestedNetAmount\" : 1.024645700144157789424070870154537260532379150390625,    \"requestedGrossAmount\" : 1.231513536777255612975068288506008684635162353515625,    \"awardedNetAmount\" : 7.3862819483858839220147274318151175975799560546875,    \"settledAmount\" : 1.489415909854170383397331534069962799549102783203125  },  \"transactionEtfData\" : {    \"brokerId\" : 3,    \"estimatedExchangeRate\" : 7.14353804701230643559028976596891880035400390625,    \"exchangeRateDate\" : \"2000-01-23T04:56:07.000+00:00\",    \"etfDealingData\" : {      \"launchPrice\" : 2.027123023002321833274663731572218239307403564453125,      \"pendingShares\" : 4.1456080298839363962315474054776132106781005859375,      \"dealingTypeCode\" : \"dealingTypeCode\",      \"validityPeriodCode\" : \"validityPeriodCode\",      \"executeShares\" : 3.61607674925191080461672754609026014804840087890625,      \"expirationDate\" : \"2000-01-23T04:56:07.000+00:00\"    },    \"stockExchangeId\" : \"stockExchangeId\",    \"estimatededExchangeRateToLocalCurrency\" : 0.885137473901165261480628032586537301540374755859375  },  \"orderedBy\" : \"orderedBy\",  \"transactionSpanishMarketData\" : {    \"spanishTransferId\" : \"spanishTransferId\",    \"spanishTransferExternalReference\" : \"spanishTransferExternalReference\",    \"basqueSpanishRegion\" : \"YES\",    \"capitalGainedUntil2005\" : 8.289659398142969592981899040751159191131591796875,    \"valuationUntil2006\" : 4.57393626423225096999658489949069917201995849609375,    \"valuationUntil2005\" : 6.623518433804886029747649445198476314544677734375  },  \"price\" : {    \"date\" : \"2000-01-23T04:56:07.000+00:00\",    \"priceTypeCode\" : \"priceTypeCode\",    \"currencyCode\" : \"currencyCode\",    \"value\" : 6.02745618307040320615897144307382404804229736328125  },  \"transactionSettingsData\" : {    \"kiidAccessible\" : true,    \"cancelable\" : true,    \"grouped\" : true,    \"numberGroupedTransactions\" : 8,    \"originatedFromSpanishTransfer\" : true,    \"dealingCurrencyPolicy\" : \"INSTRUMENT_CURRENCY\",    \"reportAccessible\" : true,    \"originatedFromOperation\" : true,    \"taxTransactionHistory\" : true,    \"pac\" : true,    \"omnibus\" : \"YES\",    \"historyAccessible\" : true,    \"operationId\" : \"operationId\",    \"groupedTransactionsConfirmed\" : true,    \"exDividend\" : true  },  \"transactionContractData\" : {    \"contractExternalReference\" : \"contractExternalReference\",    \"contractAccount\" : {      \"assetAccountCode\" : \"assetAccountCode\",      \"currentAccountCode\" : \"currentAccountCode\"    }  },  \"transactionStatusCode\" : \"transactionStatusCode\",  \"id\" : 9,  \"subdistributorId\" : 2,  \"dealingFundHouseId\" : 1,  \"averagePriceApplied\" : 0.80082819046101150206595775671303272247314453125,  \"transactionFeeData\" : {    \"exitCharge\" : 3.02057969929162428712743349024094641208648681640625,    \"expensesAppliedByAfb\" : 3.05761002410493443193217899533919990062713623046875,    \"exchangeFee\" : 7.7403518187411730622216055053286254405975341796875,    \"discount\" : 8.9695787981969115065794539987109601497650146484375,    \"appliedDealingFundHouseFee\" : 7.05877035158235610623478351044468581676483154296875,    \"depositFee\" : 0.10263654006109401706225980888120830059051513671875,    \"firstTransactionFeePercentage\" : 3.258856561904760695824734284542500972747802734375,    \"secondTransactionFeePercentage\" : 4.258773108174356281097061582840979099273681640625,    \"appliedDistributorFee\" : 6.51918095101838179772357761976309120655059814453125,    \"firstTransactionFeeAmount\" : 5.5332583970349862312332334113307297229766845703125,    \"performanceFee\" : 0.202532411323639305322785730822943150997161865234375,    \"feePerDealingInstrument\" : 7.04836565559697003635619694250635802745819091796875,    \"totalFee\" : 1.0414449161182959269211778519093059003353118896484375,    \"secondTransactionFeeAmount\" : 6.6284642750877420525057459599338471889495849609375,    \"dilutionLevy\" : 4.6523964329332461176136348512955009937286376953125,    \"initialCharge\" : 4.078845849666752343409825698472559452056884765625  },  \"productId\" : 3,  \"transactionSharesData\" : {    \"awardedShares\" : 4.4596050349586793259959449642337858676910400390625,    \"confirmedSharesBeforeDistribution\" : 0.434313988241488146968549699522554874420166015625,    \"requestedShares\" : 2.940964297482789646664969041012227535247802734375,    \"sharesAtCutoffDate\" : 1.7325933120207193116613098027301020920276641845703125,    \"confirmedSharedAfterDistribution\" : 3.901545264248647004734493748401291668415069580078125  },  \"distributorId\" : 5,  \"paymentCurrencyCode\" : \"paymentCurrencyCode\",  \"transactionDividendData\" : {    \"distributionCategory\" : \"INTEREST\",    \"dividendPayoutFrequencyCode\" : \"dividendPayoutFrequencyCode\",    \"perDealingInstrumentCorporationTax\" : 3.557195227068097320710649000830017030239105224609375,    \"netIncomeAmount\" : 6.438423552598546706349225132726132869720458984375,    \"distributionNumber\" : 1,    \"distributionPolicy\" : \"INCOME\",    \"dividendRate\" : 4.9652184929849543237878606305457651615142822265625,    \"transactionReinvestmentData\" : {      \"reinvestmentPrice\" : {        \"date\" : \"2000-01-23T04:56:07.000+00:00\",        \"priceTypeCode\" : \"priceTypeCode\",        \"currencyCode\" : \"currencyCode\",        \"value\" : 6.02745618307040320615897144307382404804229736328125      },      \"reinvestedAmount\" : 2.884162126668780246063761296682059764862060546875,      \"reinvestmentWithheldPercentage\" : 6.70401929795003592715829654480330646038055419921875,      \"reinvestmentTransactionExternalReference\" : \"reinvestmentTransactionExternalReference\",      \"reinvestmentWithheldAmount\" : 6.87805222012787620400331434211693704128265380859375,      \"reinvestedShares\" : 6.77832496304801335185175048536621034145355224609375,      \"reinvestmentWithheldAmountInLocalCurrency\" : 5.94489560761401580890606055618263781070709228515625    },    \"withholdingPolicy\" : \"DEALING_FUND_HOUSE\",    \"netEqualizationAmount\" : 9.0183481860707832566959041287191212177276611328125,    \"sharesRate\" : 1.2846590061165319429647979632136411964893341064453125,    \"perShareCorporationTax\" : 6.96511769763884558415156789124011993408203125,    \"dividendType\" : \"FINAL\",    \"grossDividendAmount\" : 6.683562403749608193948006373830139636993408203125,    \"frankedIncomePercentage\" : 9.965781217890562260208753286860883235931396484375,    \"incomeTax\" : 8.7620420127490010742121739895083010196685791015625,    \"localAccount\" : true,    \"equalizationRate\" : 5.02500479152029466689555192715488374233245849609375,    \"grossAmountRate\" : 9.3693102714106686335071572102606296539306640625,    \"unfrankedIncomePercentage\" : 3.35319334701124294184637619764544069766998291015625,    \"paymentDate\" : \"2000-01-23T04:56:07.000+00:00\",    \"startDate\" : \"2000-01-23T04:56:07.000+00:00\"  },  \"dealingInstrumentType\" : \"FUND\",  \"localCurrencyCode\" : \"localCurrencyCode\",  \"exchangeRateApplied\" : 2.3021358869347654518833223846741020679473876953125,  \"externalReference\" : \"externalReference\",  \"exchangeRateToLocalCurrency\" : 7.061401241503109105224211816675961017608642578125,  \"transactionPrepaidData\" : {    \"estimatedPriceApplied\" : {      \"date\" : \"2000-01-23T04:56:07.000+00:00\",      \"priceTypeCode\" : \"priceTypeCode\",      \"currencyCode\" : \"currencyCode\",      \"value\" : 6.02745618307040320615897144307382404804229736328125    },    \"prepaidAmount\" : 6.07389808578115175663469926803372800350189208984375  },  \"contractId\" : 6,  \"transactionCapitalGainedData\" : {    \"capitalGained\" : 6.8468526983526398765889098285697400569915771484375,    \"capitalGainedInLocalCurrency\" : 7.4577447736837658709418974467553198337554931640625  },  \"currencyCode\" : \"currencyCode\",  \"transactionForeignExchangeData\" : {    \"fxServiceFeeCurrencyCode\" : \"fxServiceFeeCurrencyCode\",    \"fxRate\" : 4.67894798900584873990737833082675933837890625,    \"fxServiceFeeAmount\" : 9.132027271330688478201409452594816684722900390625,    \"fxRateAppliedByAfb\" : 7.26052126480210358039357743109576404094696044921875,    \"fxServiceFeePercentage\" : 0.8774076871421565559927557842456735670566558837890625  },  \"transactionItalianRetailMarketData\" : {    \"fiscalAccruedIncome\" : 9.7029638000235660655334868351928889751434326171875,    \"weightedAveragePrice\" : 4.863159081028840091676102019846439361572265625,    \"fiscalShares\" : 0.519900201872498524124921459588222205638885498046875,    \"weightedAverageCost\" : 5.5073869641798811613853104063309729099273681640625,    \"reductionFeePercentage\" : 7.93350688173715123951978966942988336086273193359375,    \"confirmationLetter\" : true,    \"feeChargeOption\" : \"FRONTLOAD\"  },  \"transactionWithholdingData\" : {    \"withheldAmount\" : 9.2541839462678385785920909256674349308013916015625,    \"withheldAmountInLocalCurrency\" : 1.826870217705811594299802891327999532222747802734375,    \"withholdingPercentage\" : 3.502657762086400783374529055436141788959503173828125  }}");
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+        Transaction transaction = new Transaction();
+
+        Random random = new SecureRandom();
+
+        OffsetDateTime priceDate = OffsetDateTime.now(ZoneOffset.UTC);
+        double priceValue = random.nextDouble();
+        double exchangeRateApplied = random.nextDouble();
+        double transactionSharesDataAwardedShare = random.nextDouble();
+        double transactionAmountDataAwardedGrossAmount = random.nextDouble();
+        double transactionAmountDataAwardedNetAmount = random.nextDouble();
+        double transactionAmountDataSettledAmount = random.nextDouble();
+        double transactionItalianMarketDataWeightedAveragePrice = random.nextDouble();
+        double transactionItalianMarketDataWeightedAverageCost = random.nextDouble();
+        double transactionCapitalGainedDataCapitalGained = random.nextDouble();
+        double transactionItalianMarketDataFiscalAccruedIncome = random.nextDouble();
+        double transactionFeeDataAppliedDistributorFee = random.nextDouble();
+        double transactionFeeDataAppliedDealingFundHouseFee = random.nextDouble();
+        double transactionFeeDataExpensesAppliedByAFB = random.nextDouble();
+
+        Price price = new Price();
+        price.setDate(priceDate);
+        price.setValue(priceValue);
+
+        transaction.setPrice(price);
+        transaction.setExchangeRateApplied(exchangeRateApplied);
+
+        TransactionSharesData transactionSharesData = new TransactionSharesData();
+        transactionSharesData.setAwardedShares(transactionSharesDataAwardedShare);
+
+        transaction.setTransactionSharesData(transactionSharesData);
+        TransactionAmountData transactionAmountData = new TransactionAmountData();
+        transactionAmountData.setAwardedGrossAmount(transactionAmountDataAwardedGrossAmount);
+        transactionAmountData.setAwardedNetAmount(transactionAmountDataAwardedNetAmount);
+        transactionAmountData.setSettledAmount(transactionAmountDataSettledAmount);
+
+        transaction.setTransactionAmountData(transactionAmountData);
+        TransactionItalianRetailMarketData transactionItalianRetailMarketData = new TransactionItalianRetailMarketData();
+        transactionItalianRetailMarketData.setFiscalAccruedIncome(transactionItalianMarketDataFiscalAccruedIncome);
+        transactionItalianRetailMarketData.setWeightedAverageCost(transactionItalianMarketDataWeightedAverageCost);
+        transactionItalianRetailMarketData.setWeightedAveragePrice(transactionItalianMarketDataWeightedAveragePrice);
+
+        transaction.setTransactionItalianRetailMarketData(transactionItalianRetailMarketData);
+        TransactionCapitalGainedData transactionCapitalGainedData = new TransactionCapitalGainedData();
+        transactionCapitalGainedData.setCapitalGained(transactionCapitalGainedDataCapitalGained);
+
+        transaction.setTransactionCapitalGainedData(transactionCapitalGainedData);
+        TransactionFeeData transactionFeeData = new TransactionFeeData();
+        transactionFeeData.setAppliedDealingFundHouseFee(transactionFeeDataAppliedDealingFundHouseFee);
+        transactionFeeData.setAppliedDistributorFee(transactionFeeDataAppliedDistributorFee);
+        transactionFeeData.setExpensesAppliedByAfb(transactionFeeDataExpensesAppliedByAFB);
+
+        transaction.setTransactionFeeData(transactionFeeData);
+        transaction.setId(transactionId);
+        transaction.setTransactionStatusCode("CE");
+
+        return ResponseEntity.ok(transaction);
 
     }
 
