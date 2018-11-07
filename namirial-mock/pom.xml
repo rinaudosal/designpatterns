@@ -4,7 +4,7 @@
     <artifactId>namirial-mock</artifactId>
     <packaging>jar</packaging>
     <name>namirial-mock</name>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.7</version>
     <properties>
         <java.version>1.7</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>

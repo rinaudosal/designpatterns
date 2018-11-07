@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.annotation.PreDestroy;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -36,13 +37,23 @@ public class V1ApiController implements V1Api {
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
+    private final SlackSession session;
 
     private Map<Long, Long> otpMap = new HashMap<>();
 
     @org.springframework.beans.factory.annotation.Autowired
-    public V1ApiController(ObjectMapper objectMapper, HttpServletRequest request) {
+    public V1ApiController(ObjectMapper objectMapper, HttpServletRequest request) throws IOException {
         this.objectMapper = objectMapper;
         this.request = request;
+        session = SlackSessionFactory.createWebSocketSlackSession("xoxb-386819753813-473770138946-7sAWdwP0HG0kHNFh8Yh0hx3K");
+        session.connect();
+    }
+
+    @PreDestroy
+    public void preDestroy() throws IOException {
+        if (session.isConnected()) {
+            session.disconnect();
+        }
     }
 
     public ResponseEntity<EnrollSuspendedOUT> enrollSuspendedUsingGET(@ApiParam(value = "requestId", required = true) @PathVariable("requestId") String requestId, @ApiParam(value = "holderId", required = true) @PathVariable("holderId") Integer holderId, @ApiParam(value = "otpCode", required = true) @PathVariable("otpCode") String otpCode) {
@@ -100,11 +111,9 @@ public class V1ApiController implements V1Api {
 
             otpMap.put(holder, otp);
 
-            SlackSession session = SlackSessionFactory.createWebSocketSlackSession("xoxp-386819753813-387726676423-385984789744-02070eebc26b122225a9a40254725a56");
-            session.connect();
-            SlackChannel channel = session.findChannelByName("general"); //make sure bot is a member of the channel.
+            String message = "namirial-mock request otp -> [SMS]->[" + otpRequestWithCustomerIN.getPhoneMobile() + "]: " + otpRequestWithCustomerIN.getTextMessage() + otp;
 
-            session.sendMessage(channel, "namirial-mock request otp -> [SMS]->[" + otpRequestWithCustomerIN.getPhoneMobile() + "]: " + otpRequestWithCustomerIN.getTextMessage() + otp);
+            sendSlackMessage(message);
 
             return new ResponseEntity<OtpRequestWithCustomerOUT>(objectMapper.readValue("{  \"requestId\" : \"RECN" + System.currentTimeMillis() + "\",  \"holderId\" : " + holder + "}", OtpRequestWithCustomerOUT.class), HttpStatus.OK);
         } catch (IOException e) {
@@ -113,26 +122,37 @@ public class V1ApiController implements V1Api {
         }
     }
 
-    public ResponseEntity<Void> sendOtpSmsFromHolderUsingPOST(@ApiParam(value = "sendOtpSmsFromHolderIN", required = true) @Valid @RequestBody SendOtpSmsFromHolderIN sendOtpSmsFromHolderIN) {
-        SlackSession session = SlackSessionFactory.createWebSocketSlackSession("xoxp-386819753813-387726676423-385984789744-02070eebc26b122225a9a40254725a56");
-        try {
+    private void sendSlackMessage(String message) throws IOException {
+
+        if (!session.isConnected()) {
             session.connect();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
-
-        long x = 1234567L;
-        long y = 23456789L;
-        Random r = new Random();
-
-        long otp = x + ((long) (r.nextDouble() * (y - x)));
-
-        otpMap.put(sendOtpSmsFromHolderIN.getHolderId().longValue(), otp);
 
         SlackChannel channel = session.findChannelByName("general"); //make sure bot is a member of the channel.
 
-        session.sendMessage(channel, "namirial-mock resend otp-> [SMS]->[" + sendOtpSmsFromHolderIN.getHolderId() + "]: " + sendOtpSmsFromHolderIN.getTextMessage() + otp);
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        session.sendMessage(channel, message);
+
+    }
+
+    public ResponseEntity<Void> sendOtpSmsFromHolderUsingPOST(@ApiParam(value = "sendOtpSmsFromHolderIN", required = true) @Valid @RequestBody SendOtpSmsFromHolderIN sendOtpSmsFromHolderIN) {
+
+        try {
+            long x = 1234567L;
+            long y = 23456789L;
+            Random r = new Random();
+
+            long otp = x + ((long) (r.nextDouble() * (y - x)));
+
+            otpMap.put(sendOtpSmsFromHolderIN.getHolderId().longValue(), otp);
+
+
+            sendSlackMessage("namirial-mock resend otp-> [SMS]->[" + sendOtpSmsFromHolderIN.getHolderId() + "]: " + sendOtpSmsFromHolderIN.getTextMessage() + otp);
+            return new ResponseEntity<Void>(HttpStatus.OK);
+
+        } catch (IOException e) {
+            log.error("Couldn't serialize response for content type application/json", e);
+            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }
