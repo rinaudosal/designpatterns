@@ -8,6 +8,7 @@ package org.openapitools.api;
 import io.swagger.annotations.*;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openapitools.model.*;
+import org.openapitools.nav.Storage;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,6 +22,8 @@ import org.springframework.web.context.request.NativeWebRequest;
 
 import javax.validation.Valid;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.security.SecureRandom;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
@@ -260,9 +263,12 @@ public interface DistributorsApi {
 
             OffsetDateTime now = OffsetDateTime.now();
             order.getOrderDateData().setOrderedDate(now);
-            order.getOrderDateData().setSettlementDate(now);
+            order.getOrderDateData().setSettlementDate(now.plusDays(2L));
 
         }
+
+        Storage.addOrder(order.getId().toString(), order);
+
         Message message = new Message();
         message.setStatus(Message.StatusEnum.OK);
         orderAndMessages.setMessages(Collections.singletonList(message));
@@ -2407,58 +2413,74 @@ public interface DistributorsApi {
 
         Random random = new SecureRandom();
 
-        OffsetDateTime priceDate = OffsetDateTime.now(ZoneOffset.UTC);
-        double priceValue = random.nextDouble();
-        double exchangeRateApplied = random.nextDouble();
-        double transactionSharesDataAwardedShare = random.nextDouble();
-        double transactionAmountDataAwardedGrossAmount = random.nextDouble();
-        double transactionAmountDataAwardedNetAmount = random.nextDouble();
-        double transactionAmountDataSettledAmount = random.nextDouble();
-        double transactionItalianMarketDataWeightedAveragePrice = random.nextDouble();
-        double transactionItalianMarketDataWeightedAverageCost = random.nextDouble();
-        double transactionCapitalGainedDataCapitalGained = random.nextDouble();
-        double transactionItalianMarketDataFiscalAccruedIncome = random.nextDouble();
-        double transactionFeeDataAppliedDistributorFee = random.nextDouble();
-        double transactionFeeDataAppliedDealingFundHouseFee = random.nextDouble();
-        double transactionFeeDataExpensesAppliedByAFB = random.nextDouble();
+        OffsetDateTime priceDate = OffsetDateTime.now(ZoneOffset.UTC).plusDays(2L);
 
-        Price price = new Price();
-        price.setDate(priceDate);
-        price.setValue(priceValue);
+        Order order = Storage.getOrder(transactionId.toString());
 
-        transaction.setPrice(price);
-        transaction.setExchangeRateApplied(exchangeRateApplied);
+        if (null != order) {
+            BigDecimal nav = Storage.getNav(priceDate.toLocalDate(), order.getDealingInstrument().getId());
+            double priceValue = nav.doubleValue();
+            double exchangeRateApplied = random.nextDouble();
 
-        TransactionSharesData transactionSharesData = new TransactionSharesData();
-        transactionSharesData.setAwardedShares(transactionSharesDataAwardedShare);
+            OrderAmountData orderAmountData = order.getOrderAmountData();
+            Double requestedGrossAmount = orderAmountData.getRequestedGrossAmount();
 
-        transaction.setTransactionSharesData(transactionSharesData);
-        TransactionAmountData transactionAmountData = new TransactionAmountData();
-        transactionAmountData.setAwardedGrossAmount(transactionAmountDataAwardedGrossAmount);
-        transactionAmountData.setAwardedNetAmount(transactionAmountDataAwardedNetAmount);
-        transactionAmountData.setSettledAmount(transactionAmountDataSettledAmount);
+            BigDecimal transactionSharesDataAwardedShare = new BigDecimal(random.nextDouble());
+            if (requestedGrossAmount > 0) {
+                transactionSharesDataAwardedShare = BigDecimal.valueOf(requestedGrossAmount).divide(nav, 8, RoundingMode.HALF_UP);
+            }
 
-        transaction.setTransactionAmountData(transactionAmountData);
-        TransactionItalianRetailMarketData transactionItalianRetailMarketData = new TransactionItalianRetailMarketData();
-        transactionItalianRetailMarketData.setFiscalAccruedIncome(transactionItalianMarketDataFiscalAccruedIncome);
-        transactionItalianRetailMarketData.setWeightedAverageCost(transactionItalianMarketDataWeightedAverageCost);
-        transactionItalianRetailMarketData.setWeightedAveragePrice(transactionItalianMarketDataWeightedAveragePrice);
+            double transactionAmountDataAwardedGrossAmount = requestedGrossAmount;
+            double transactionAmountDataAwardedNetAmount = requestedGrossAmount;
+            double transactionAmountDataSettledAmount = requestedGrossAmount;
+            double transactionItalianMarketDataWeightedAveragePrice = random.nextDouble();
+            double transactionItalianMarketDataWeightedAverageCost = random.nextDouble();
+            double transactionCapitalGainedDataCapitalGained = random.nextDouble();
+            double transactionItalianMarketDataFiscalAccruedIncome = random.nextDouble();
+            double transactionFeeDataAppliedDistributorFee = random.nextDouble();
+            double transactionFeeDataAppliedDealingFundHouseFee = random.nextDouble();
+            double transactionFeeDataExpensesAppliedByAFB = random.nextDouble();
 
-        transaction.setTransactionItalianRetailMarketData(transactionItalianRetailMarketData);
-        TransactionCapitalGainedData transactionCapitalGainedData = new TransactionCapitalGainedData();
-        transactionCapitalGainedData.setCapitalGained(transactionCapitalGainedDataCapitalGained);
+            Price price = new Price();
+            price.setDate(priceDate);
+            price.setValue(priceValue);
 
-        transaction.setTransactionCapitalGainedData(transactionCapitalGainedData);
-        TransactionFeeData transactionFeeData = new TransactionFeeData();
-        transactionFeeData.setAppliedDealingFundHouseFee(transactionFeeDataAppliedDealingFundHouseFee);
-        transactionFeeData.setAppliedDistributorFee(transactionFeeDataAppliedDistributorFee);
-        transactionFeeData.setExpensesAppliedByAfb(transactionFeeDataExpensesAppliedByAFB);
+            transaction.setPrice(price);
+            transaction.setExchangeRateApplied(exchangeRateApplied);
 
-        transaction.setTransactionFeeData(transactionFeeData);
-        transaction.setId(transactionId);
-        transaction.setTransactionStatusCode("CE");
+            TransactionSharesData transactionSharesData = new TransactionSharesData();
+            transactionSharesData.setAwardedShares(transactionSharesDataAwardedShare.doubleValue());
 
-        return ResponseEntity.ok(transaction);
+            transaction.setTransactionSharesData(transactionSharesData);
+            TransactionAmountData transactionAmountData = new TransactionAmountData();
+            transactionAmountData.setAwardedGrossAmount(transactionAmountDataAwardedGrossAmount);
+            transactionAmountData.setAwardedNetAmount(transactionAmountDataAwardedNetAmount);
+            transactionAmountData.setSettledAmount(transactionAmountDataSettledAmount);
+
+            transaction.setTransactionAmountData(transactionAmountData);
+            TransactionItalianRetailMarketData transactionItalianRetailMarketData = new TransactionItalianRetailMarketData();
+            transactionItalianRetailMarketData.setFiscalAccruedIncome(transactionItalianMarketDataFiscalAccruedIncome);
+            transactionItalianRetailMarketData.setWeightedAverageCost(transactionItalianMarketDataWeightedAverageCost);
+            transactionItalianRetailMarketData.setWeightedAveragePrice(transactionItalianMarketDataWeightedAveragePrice);
+
+            transaction.setTransactionItalianRetailMarketData(transactionItalianRetailMarketData);
+            TransactionCapitalGainedData transactionCapitalGainedData = new TransactionCapitalGainedData();
+            transactionCapitalGainedData.setCapitalGained(transactionCapitalGainedDataCapitalGained);
+
+            transaction.setTransactionCapitalGainedData(transactionCapitalGainedData);
+            TransactionFeeData transactionFeeData = new TransactionFeeData();
+            transactionFeeData.setAppliedDealingFundHouseFee(transactionFeeDataAppliedDealingFundHouseFee);
+            transactionFeeData.setAppliedDistributorFee(transactionFeeDataAppliedDistributorFee);
+            transactionFeeData.setExpensesAppliedByAfb(transactionFeeDataExpensesAppliedByAFB);
+
+            transaction.setTransactionFeeData(transactionFeeData);
+            transaction.setId(transactionId);
+            transaction.setTransactionStatusCode("CE");
+
+            return ResponseEntity.ok(transaction);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
 
     }
 
@@ -5535,7 +5557,7 @@ public interface DistributorsApi {
 
         OffsetDateTime now = OffsetDateTime.now();
         order.getOrderDateData().setOrderedDate(now);
-        order.getOrderDateData().setSettlementDate(now);
+        order.getOrderDateData().setSettlementDate(now.plusDays(2L));
 
         Message message = new Message();
         message.setStatus(Message.StatusEnum.OK);
