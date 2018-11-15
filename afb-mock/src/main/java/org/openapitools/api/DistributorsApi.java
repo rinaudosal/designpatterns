@@ -263,7 +263,7 @@ public interface DistributorsApi {
 
             OffsetDateTime now = OffsetDateTime.now();
             order.getOrderDateData().setOrderedDate(now);
-            order.getOrderDateData().setSettlementDate(now.plusDays(2L));
+            order.getOrderDateData().setSettlementDate(now);
 
         }
 
@@ -2413,7 +2413,7 @@ public interface DistributorsApi {
 
         Random random = new SecureRandom();
 
-        OffsetDateTime priceDate = OffsetDateTime.now(ZoneOffset.UTC).plusDays(2L);
+        OffsetDateTime priceDate = OffsetDateTime.now(ZoneOffset.UTC);
 
         Order order = Storage.getOrder(transactionId.toString());
 
@@ -5557,7 +5557,7 @@ public interface DistributorsApi {
 
         OffsetDateTime now = OffsetDateTime.now();
         order.getOrderDateData().setOrderedDate(now);
-        order.getOrderDateData().setSettlementDate(now.plusDays(2L));
+        order.getOrderDateData().setSettlementDate(now);
 
         Message message = new Message();
         message.setStatus(Message.StatusEnum.OK);

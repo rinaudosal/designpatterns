@@ -4,7 +4,7 @@
     <artifactId>afb-mock</artifactId>
     <packaging>jar</packaging>
     <name>afb-mock</name>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <properties>
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
