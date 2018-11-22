@@ -46,6 +46,7 @@ fun Route.DefaultApi() {
     val gson = Gson()
     val empty = mutableMapOf<String, Any?>()
     val logger = LoggerFactory.getLogger("defaultAPi")
+    val session = SlackSessionFactory.createWebSocketSlackSession("xoxb-386819753813-473681747491-YEXj5KSNZYhKF4C2MMp3mo1z")
 
     route("/management/device") {
         post {
@@ -94,8 +95,10 @@ fun Route.DefaultApi() {
                     call.respond(HttpStatusCode.InternalServerError, ErrorResponse("-1", "KO"))
                 }
             } else {
-                val session = SlackSessionFactory.createWebSocketSlackSession("xoxp-386819753813-387726676423-385984789744-02070eebc26b122225a9a40254725a56")
-                session.connect()
+
+                if (!session.isConnected) {
+                    session.connect()
+                }
                 val channel = session.findChannelByName("general") //make sure bot is a member of the channel.
                 var to = if (sendMessageRequest.type == SendMessageRequest.Type.push) sendMessageRequest.to[0].group else sendMessageRequest.to[0].reference
                 session.sendMessage(channel, "mmc-mock -> [" + sendMessageRequest.type + "]->[" + to + "]: " + sendMessageRequest.content.body)
