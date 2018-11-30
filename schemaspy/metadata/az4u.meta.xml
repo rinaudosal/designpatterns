@@ -66,7 +66,9 @@
         <table name="customer_status" comments="Status of customers. Table have History" />
         <table name="customer_status_flag" comments="List all flags that can be attached to a non special state. Table have History" />
         <table name="customer_status_motivation" comments="Motivation of blocked customers. Table have History" />
-        <table name="customer_survey" comments="Surveys compiled of customers. Table have History" />
+        <table name="customer_survey" comments="Surveys compiled of customers. Table have History">
+            <column name="fill_date" comments="Date on which the survey was modified"/>
+        </table>
         <table name="customer_survey_answers" comments="Answers compiled of customers. Table have History" />
         <table name="expected_return" comments="Expected return of investment" />
         <table name="login" comments="Login info of customers" />
@@ -80,8 +82,12 @@
         <table name="pin" comments="Table to manage pins" />
         <table name="scheduled_status_notification" comments="Notification scheduled for customer in specific Status" />
         <table name="survey_answer" comments="List of answers for specific surveys" />
-        <table name="aml_survey" comments="Aml Survey compiled of customers. Table have History" />
-        <table name="pep_survey" comments="Pep Survey compiled of customers. Table have History" />
+        <table name="aml_survey" comments="Aml Survey compiled of customers. Table have History">
+            <column name="fill_date" comments="Date on which the survey was modified"/>
+        </table>
+        <table name="pep_survey" comments="Pep Survey compiled of customers. Table have History">
+            <column name="fill_date" comments="Date on which the survey was modified"/>
+        </table>
         <table name="survey_answer_lang" comments="Description of Answer in different languages" />
         <table name="survey_answer_weight" comments="Weight for specific answers" />
         <table name="survey_questions" comments="Questions for specific survey" />
