@@ -1,0 +1,15 @@
+<schemaMeta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schemaspy.org/xsd/6/schemameta.xsd" >
+    <comments>Database for FundRush Application</comments>
+    <tables>
+		<table name="jhi_entity_audit_event" comments="Tabella in ascolto delle modifiche sulle entità contro il database, per ogni entità è riportato il contenuto dell'entità stessa e l'operazione insert|update|delete eseguita" />
+		<table name="jhi_persistent_audit_event" comments="Tabella per registrare le operazione utente e i relativi eventi" />
+		<table name="jhi_persistent_audit_evt_data" comments="Tabella con i dettagli degli eventi, relazionata alla jhi_persistent_audit_event tramite event_id" />
+        
+		<table name="authority" comments="Lista delle autorizzazione associabili a un ruolo" />
+		<table name="roles_authorities" comments="Associazione tra ruolo e autorizzazioni" />
+		<table name="role" comments="Lista dei ruoli" />
+		<table name="user" comments="Lista degli utenti" />
+		<table name="users_roles" comments="Associazione tra ruolo e utenti" />
+		
+    </tables>
+</schemaMeta>

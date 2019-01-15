@@ -1,0 +1,16 @@
+<schemaMeta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schemaspy.org/xsd/6/schemameta.xsd" >
+    <comments>Database for FundRush Application</comments>
+    <tables>
+		<table name="jhi_entity_audit_event" comments="Tabella in ascolto delle modifiche sulle entità contro il database, per ogni entità è riportato il contenuto dell'entità stessa e l'operazione insert|update|delete eseguita" />
+		<table name="jhi_persistent_audit_event" comments="Tabella per registrare le operazione utente e i relativi eventi" />
+		<table name="jhi_persistent_audit_evt_data" comments="Tabella con i dettagli degli eventi, relazionata alla jhi_persistent_audit_event tramite event_id" />
+        
+		<table name="company" comments="Lista delle società (accordi quadro e accordi marketing)" />
+		<table name="division" comments="Lista delle divisioni (accordi quadro)" />
+		<table name="executive_user_detail" comments="Associa l'utente alle società e alle divisioni (accordi quadro)" />
+		<table name="executive_department" comments="Associa l'utente tramite la tabella executive_user_detail ai reparti (accordi quadro)" />
+		<table name="marketing_user_detail" comments="Associa l'utente alla società, al tipo compratore, al gruppo e al sottoreparto (accordi marketing)" />
+		<table name="supplier_ownership" comments="Associa la titolarità di un fornitore all'utente su base annuale (accordo quadro)" />
+		
+    </tables>
+</schemaMeta>
