@@ -2,8 +2,8 @@
 <codeTemplateList>
     <templates>
         <templates version="1.3">
-            <id>d9b7040e-0af7-4f59-8619-cc7933203440</id>
-            <name>Assertrtions</name>
+            <id>ec076060-c148-424f-8e04-86f779d3bd6e</id>
+            <name>PierTest_Assertj</name>
             <fileNamePattern>.*\.java$</fileNamePattern>
             <type>caret</type>
             <enabled>true</enabled>
