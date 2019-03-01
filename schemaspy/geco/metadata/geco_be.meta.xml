@@ -11,6 +11,34 @@
 		<table name="executive_department" comments="Associa l'utente tramite la tabella executive_user_detail ai reparti (accordi quadro)" />
 		<table name="marketing_user_detail" comments="Associa l'utente alla società, al tipo compratore, al gruppo e al sottoreparto (accordi marketing)" />
 		<table name="supplier_ownership" comments="Associa la titolarità di un fornitore all'utente su base annuale (accordo quadro)" />
-		
+		<table name="buyer_type" comments="Tabella contenente la lista tipi compratore" />		
+		<table name="buyer_type_lang" comments="Traduzione in lingua dei tipi compratore" />		
+		<table name="calculation_type" comments="Tabella contenente la lista tipi calcolo" />		
+		<table name="calculation_type_lang" comments="Traduzione in lingua dei tipi calcolo" />		
+		<table name="causal" comments="Tabella contenente la lista delle causali per gli Accordi Quadro" />		
+		<table name="causal_liquidation_mode" comments="Tabella contenente la lista delle modalità di liquidazione della causale" />		
+		<table name="causal_unit_measure_prize" comments="Tabella contenente la lista delle unità di misura della causale" />	
+		<table name="executive_agreement" comments="Tabella contenente la lista degli Accordi Quadro" />	
+		<table name="executive_agreement_status" comments="Tabella contenente la lista degli stati che puo assumere gli Accordi Quadro" />	
+		<table name="executive_agreement_status_lang" comments="Traduzione in lingua degli stati degli Accordi Quadro" />
+		<table name="geographical_sphere" comments="Tabella contenente la lista delle sfere geografiche di applicazione della posta" />	
+		<table name="geographical_sphere_lang" comments="Traduzione in lingua delle sfere geografiche" />	
+				
+		<table name="item_invoice" comments="Tabella contenente le poste in fattura degli Accordi Quadro" />
+		<table name="item_invoice_discount" comments="Tabella contenente gli sconti in fattura delle poste per gli Accordi Quadro" />	
+		<table name="liquidation_mode" comments="Tabella contenente la lista delle modalità di liquidazione" />	
+		<table name="liquidation_mode_lang" comments="Traduzione in lingua delle modalità di liquidazione" />	
+		<table name="liquidation_type" comments="Tabella contenente la lista delle tipologie di liquidazione" />	
+		<table name="liquidation_type_lang" comments="Traduzione in lingua delle tipologie di liquidazione" />	
+		<table name="merchandise_sphere" comments="Tabella contenente la lista delle sfere merceologiche" />	
+		<table name="merchandise_sphere_lang" comments="Traduzione in lingua delle sfere merceologiche" />	
+		<table name="target_sphere" comments="Tabella contenente la lista delle sfere target" />	
+		<table name="target_sphere_lang" comments="Traduzione in lingua delle sfere target" />	
+		<table name="to_do_list" comments="Tabella contenente le ToDo List degli utenti" />	
+		<table name="unit_measure_calculation" comments="Tabella contenente le unità di misura calcolo" />	
+		<table name="unit_measure_calculation_lang" comments="Traduzione in lingua delle unità di misura calcolo" />	
+		<table name="unit_measure_prize" comments="Tabella contenente le unità di misura prezzo" />	
+		<table name="unit_measure_prize_lang" comments="Traduzione in lingua delle unità di misura prezzo" />	
+
     </tables>
 </schemaMeta>

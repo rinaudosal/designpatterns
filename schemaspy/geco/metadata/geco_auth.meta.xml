@@ -10,6 +10,7 @@
 		<table name="role" comments="Lista dei ruoli" />
 		<table name="user" comments="Lista degli utenti" />
 		<table name="users_roles" comments="Associazione tra ruolo e utenti" />
+		<table name="chat_message" comments="Lista dei messaggi scambiati in chat" />
 		
     </tables>
 </schemaMeta>
