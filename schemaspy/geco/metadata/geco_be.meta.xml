@@ -39,6 +39,10 @@
 		<table name="unit_measure_calculation_lang" comments="Traduzione in lingua delle unità di misura calcolo" />	
 		<table name="unit_measure_prize" comments="Tabella contenente le unità di misura prezzo" />	
 		<table name="unit_measure_prize_lang" comments="Traduzione in lingua delle unità di misura prezzo" />	
+		<table name="fake_institution" comments="Tabella contenente i punti vendita fittizzi delle Società" />
 
-    </tables>
+		<table name="merchandise_sphere_item_invoice" comments="Tabella contenente le sfere merceologiche collegate alla Posta in Fattura" />
+		<table name="geographical_sphere_item_invoice" comments="Tabella contenente le sfere geografiche collegate alla Posta in Fattura" />
+
+	</tables>
 </schemaMeta>
