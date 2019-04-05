@@ -28,8 +28,8 @@
 		<table name="item_invoice_discount" comments="Tabella contenente gli sconti in fattura delle poste per gli Accordi Quadro" />	
 		<table name="liquidation_mode" comments="Tabella contenente la lista delle modalità di liquidazione" />	
 		<table name="liquidation_mode_lang" comments="Traduzione in lingua delle modalità di liquidazione" />	
-		<table name="liquidation_type" comments="Tabella contenente la lista delle tipologie di liquidazione" />	
-		<table name="liquidation_type_lang" comments="Traduzione in lingua delle tipologie di liquidazione" />	
+		<table name="liquidation_type" comments="Tabella contenente la lista delle tipologie di liquidazione" />
+		<table name="liquidation_type_lang" comments="Traduzione in lingua delle tipologie di liquidazione" />
 		<table name="merchandise_sphere" comments="Tabella contenente la lista delle sfere merceologiche" />	
 		<table name="merchandise_sphere_lang" comments="Traduzione in lingua delle sfere merceologiche" />	
 		<table name="target_sphere" comments="Tabella contenente la lista delle sfere target" />	
@@ -43,6 +43,15 @@
 
 		<table name="merchandise_sphere_item_invoice" comments="Tabella contenente le sfere merceologiche collegate alla Posta in Fattura" />
 		<table name="geographical_sphere_item_invoice" comments="Tabella contenente le sfere geografiche collegate alla Posta in Fattura" />
+
+		<table name="causal_liquidation_type" comments="Tabella contenente i tipi liquidazione collegati alla causale" />
+		<table name="causal_type" comments="Tabella contenente i tipi causale" />
+		<table name="causal_type_lang" comments="Traduzione in lingua dei tipi causale" />
+		<table name="causal_unit_measure_calculation" comments="Tabella contenente le unità di misura collegate alla causale" />
+
+		<table name="unit_measure_constraint" comments="Tabella contenente i valori ammessi per le diverse unità di misura" />
+
+
 
 	</tables>
 </schemaMeta>
