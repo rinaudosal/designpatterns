@@ -24,10 +24,23 @@
 		<table name="geographical_sphere" comments="Tabella contenente la lista delle sfere geografiche di applicazione della posta" />	
 		<table name="geographical_sphere_lang" comments="Traduzione in lingua delle sfere geografiche" />	
 				
-		<table name="item_invoice" comments="Tabella contenente le poste in fattura degli Accordi Quadro" />
-		<table name="item_invoice_discount" comments="Tabella contenente gli sconti in fattura delle poste per gli Accordi Quadro" />	
-		<table name="liquidation_mode" comments="Tabella contenente la lista delle modalità di liquidazione" />	
-		<table name="liquidation_mode_lang" comments="Traduzione in lingua delle modalità di liquidazione" />	
+		<table name="agreement_rule" comments="Tabella contenente le poste in fattura degli Accordi Quadro" />
+		<table name="agreement_rule_target" comments="Tabella contenente i dati Target per le poste fuori fattura" />
+		<table name="agreement_rule_unconditional" comments="Tabella contenente i dati Incondizionati per le poste fuori fattura" />
+		<table name="conditional_discount" comments="Tabella contenente i dati Condizionati per le poste in fattura" />
+		<table name="conditional_slot" comments="Tabella contenente le fasce per gli sconti Condizionati per le poste in fattura" />
+		<table name="target_slot" comments="Tabella contenente le fasce per gli sconti Target per le poste fuori fattura" />
+		<table name="item_invoice_discount" comments="Tabella contenente gli sconti in fattura delle poste per gli Accordi Quadro" />
+		<table name="calculation_criteria" comments="Tabella contenente la lista dei criteri di calcolo" />
+		<table name="calculation_criteria_lang" comments="Traduzione in lingua dei criteri di calcolo" />
+		<table name="discount_type" comments="Tabella contenente la lista dei tipi di sconto" />
+		<table name="discount_type_lang" comments="Traduzione in lingua dei tipi di sconto" />
+		<table name="event" comments="Tabella contenente la lista dei tipi di evento" />
+		<table name="event_lang" comments="Traduzione in lingua dei tipi di evento" />
+		<table name="liquidation_mode" comments="Tabella contenente la lista delle modalità di liquidazione" />
+		<table name="liquidation_mode_lang" comments="Traduzione in lingua delle modalità di liquidazione" />
+		<table name="liquidation_boundary" comments="Tabella contenente la lista dei termini di liquidazione" />
+		<table name="liquidation_boundary_lang" comments="Traduzione in lingua dei termini di liquidazione" />
 		<table name="liquidation_type" comments="Tabella contenente la lista delle tipologie di liquidazione" />
 		<table name="liquidation_type_lang" comments="Traduzione in lingua delle tipologie di liquidazione" />
 		<table name="merchandise_sphere" comments="Tabella contenente la lista delle sfere merceologiche" />	
@@ -41,17 +54,15 @@
 		<table name="unit_measure_prize_lang" comments="Traduzione in lingua delle unità di misura prezzo" />	
 		<table name="fake_institution" comments="Tabella contenente i punti vendita fittizzi delle Società" />
 
-		<table name="merchandise_sphere_item_invoice" comments="Tabella contenente le sfere merceologiche collegate alla Posta in Fattura" />
-		<table name="geographical_sphere_item_invoice" comments="Tabella contenente le sfere geografiche collegate alla Posta in Fattura" />
+		<table name="merchandise_sphere_item" comments="Tabella contenente le sfere merceologiche collegate alla Posta in Fattura" />
+		<table name="geographical_sphere_item" comments="Tabella contenente le sfere geografiche collegate alla Posta in Fattura" />
 
-		<table name="causal_liquidation_type" comments="Tabella contenente i tipi liquidazione collegati alla causale" />
-		<table name="causal_type" comments="Tabella contenente i tipi causale" />
+		<table name="causal_liquidation_type" comments="Tabella contenente i tipi liquidazione della causale" />
+		<table name="causal_type" comments="Tabella contenente i tipi di causale" />
 		<table name="causal_type_lang" comments="Traduzione in lingua dei tipi causale" />
 		<table name="causal_unit_measure_calculation" comments="Tabella contenente le unità di misura collegate alla causale" />
 
 		<table name="unit_measure_constraint" comments="Tabella contenente i valori ammessi per le diverse unità di misura" />
-
-
 
 	</tables>
 </schemaMeta>
