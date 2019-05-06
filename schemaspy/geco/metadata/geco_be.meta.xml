@@ -15,7 +15,9 @@
 		<table name="buyer_type_lang" comments="Traduzione in lingua dei tipi compratore" />		
 		<table name="calculation_type" comments="Tabella contenente la lista tipi calcolo" />		
 		<table name="calculation_type_lang" comments="Traduzione in lingua dei tipi calcolo" />		
-		<table name="causal" comments="Tabella contenente la lista delle causali per gli Accordi Quadro" />		
+		<table name="calculation_mode" comments="Tabella contenente la lista delle modalità di calcolo" />
+		<table name="calculation_mode_lang" comments="Traduzione in lingua delle modalità di calcolo" />
+		<table name="causal" comments="Tabella contenente la lista delle causali per gli Accordi Quadro" />
 		<table name="causal_liquidation_mode" comments="Tabella contenente la lista delle modalità di liquidazione della causale" />		
 		<table name="causal_unit_measure_prize" comments="Tabella contenente la lista delle unità di misura della causale" />	
 		<table name="executive_agreement" comments="Tabella contenente la lista degli Accordi Quadro" />	
@@ -54,8 +56,9 @@
 		<table name="unit_measure_prize_lang" comments="Traduzione in lingua delle unità di misura prezzo" />	
 		<table name="fake_institution" comments="Tabella contenente i punti vendita fittizzi delle Società" />
 
-		<table name="merchandise_sphere_item" comments="Tabella contenente le sfere merceologiche collegate alla Posta in Fattura" />
-		<table name="geographical_sphere_item" comments="Tabella contenente le sfere geografiche collegate alla Posta in Fattura" />
+		<table name="merchandise_sphere_item" comments="Tabella contenente le sfere merceologiche collegate alla Posta" />
+		<table name="geographical_sphere_item" comments="Tabella contenente le sfere geografiche collegate alla Posta" />
+		<table name="target_sphere_item" comments="Tabella contenente le sfere target collegate alla Posta" />
 
 		<table name="causal_liquidation_type" comments="Tabella contenente i tipi liquidazione della causale" />
 		<table name="causal_type" comments="Tabella contenente i tipi di causale" />
