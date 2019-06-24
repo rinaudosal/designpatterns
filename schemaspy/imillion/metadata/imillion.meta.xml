@@ -1,0 +1,11 @@
+<schemaMeta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schemaspy.org/xsd/6/schemameta.xsd" >
+    <comments>Database for FundRush Application</comments>
+    <tables>
+		<table name="authority" comments="Tabella contenente i permessi degli utenti" />
+		<table name="jhi_entity_audit_event" comments="Tabella contenente tutti i cambiamenti sui record del database" />
+		<table name="jhi_persistent_audit_event" comments="Tabella contenente le azioni degli utenti che sono state censite" />
+		<table name="jhi_persistent_audit_evt_data" comments="Tabella contenente i dettagli delle azioni completate dagli utenti" />
+		<table name="user_authority" comments="Tabella contenente le associazioni utenti / permessi" />
+
+    </tables>
+</schemaMeta>
