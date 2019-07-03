@@ -1,10 +1,15 @@
 <schemaMeta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schemaspy.org/xsd/6/schemameta.xsd" >
     <comments>Database for FundRush Application</comments>
     <tables>
+		<table name="_sequences" comments="Tabella che contiene l'ultimo codice contratto disponibile er gli accordi quadro" />
 		<table name="jhi_entity_audit_event" comments="Tabella in ascolto delle modifiche sulle entità contro il database, per ogni entità è riportato il contenuto dell'entità stessa e l'operazione insert|update|delete eseguita" />
 		<table name="jhi_persistent_audit_event" comments="Tabella per registrare le operazione utente e i relativi eventi" />
 		<table name="jhi_persistent_audit_evt_data" comments="Tabella con i dettagli degli eventi, relazionata alla jhi_persistent_audit_event tramite event_id" />
-        
+
+
+		<table name="attachment" comments="Lista degli allegati associati all'accodo quadro" />
+		<table name="attachment_type" comments="Tabella contenente la lista tipi di allegati" />
+		<table name="attachment_type_lang" comments="Traduzione in lingua dei tipi di allegati disponibili" />
 		<table name="company" comments="Lista delle società (accordi quadro e accordi marketing)" />
 		<table name="division" comments="Lista delle divisioni (accordi quadro)" />
 		<table name="executive_user_detail" comments="Associa l'utente alle società e alle divisioni (accordi quadro)" />
@@ -48,7 +53,8 @@
 		<table name="merchandise_sphere" comments="Tabella contenente la lista delle sfere merceologiche" />	
 		<table name="merchandise_sphere_lang" comments="Traduzione in lingua delle sfere merceologiche" />	
 		<table name="target_sphere" comments="Tabella contenente la lista delle sfere target" />	
-		<table name="target_sphere_lang" comments="Traduzione in lingua delle sfere target" />	
+		<table name="target_supplier" comments="Tabella dei fornitori multi gestionali" />
+		<table name="target_sphere_lang" comments="Traduzione in lingua delle sfere target" />
 		<table name="to_do_list" comments="Tabella contenente le ToDo List degli utenti" />	
 		<table name="unit_measure_calculation" comments="Tabella contenente le unità di misura calcolo" />	
 		<table name="unit_measure_calculation_lang" comments="Traduzione in lingua delle unità di misura calcolo" />	
