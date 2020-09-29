@@ -1,3 +1,0 @@
-extends=mysql
-connectionSpec=jdbc:mysql://localhost:3306/az4u?useUnicode=true&characterEncoding=utf8&useSSL=false
-
