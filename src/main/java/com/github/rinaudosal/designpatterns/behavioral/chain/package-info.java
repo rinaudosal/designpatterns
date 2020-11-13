@@ -1,7 +1,7 @@
 /**
- * Package thath contains Example for behavioral pattern Chain Of Responsibility
- * 2019/07/16
+ * Package containing usage for behavioral pattern Chain Of Responsibility
+ * 2020/11/13
  *
- * @author Sirius
+ * @author rinaudo.sal@gmail.com
  */
 package com.github.rinaudosal.designpatterns.behavioral.chain;

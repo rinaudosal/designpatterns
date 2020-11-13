@@ -1,16 +1,16 @@
 package com.github.rinaudosal.designpatterns.behavioral.chain;
 
 /**
- * Abstract class thet must Implement all Element of the Chain
+ * Abstract class must to be Implemented by all the elements of the Chain
  */
-public abstract class HandlerRole {
+public abstract class RoleHandler {
 
     /**
      * Every element of the chain knows its successor
      */
-    HandlerRole successor;
+    RoleHandler successor;
 
-    HandlerRole(HandlerRole successor) {
+    public void setSuccessor(RoleHandler successor) {
         this.successor = successor;
     }
 
@@ -19,6 +19,6 @@ public abstract class HandlerRole {
      *
      * @param request the request to process
      */
-    public abstract HandlerRole handleRequest(Request request);
+    public abstract String handleRequest(Request request);
 
 }

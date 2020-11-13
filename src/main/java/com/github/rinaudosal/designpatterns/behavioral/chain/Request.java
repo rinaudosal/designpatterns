@@ -1,20 +1,18 @@
 package com.github.rinaudosal.designpatterns.behavioral.chain;
 
-class Request {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+@AllArgsConstructor
+class Request {
 	private RequestType requestType;
 	private double amount;
-	
-	Request(RequestType requestType, double amount) {
-		this.requestType = requestType;
-		this.amount = amount;
-	}
-	
-	RequestType getRequestType() {
-		return requestType;
-	}
 
-	double getAmount() {
-		return amount;
+	enum RequestType {
+		CONFERENCE, PURCHASE
 	}
 }
