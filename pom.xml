@@ -5,24 +5,20 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.6.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>2.3.5.RELEASE</version>
+		<relativePath/>
 	</parent>
-	<groupId>ch.codeway.sirius</groupId>
-	<artifactId>designpattern</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>designpattern</name>
-	<description>Project to contain Examples to describe major patterns in Java</description>
+	<groupId>com.github.rinaudosal</groupId>
+	<artifactId>designpatterns</artifactId>
+	<version>0.0.2-SNAPSHOT</version>
+	<name>Design Patterns Java</name>
+	<description>Project containing Examples to Describe, usage and how to test it majors patterns in Java</description>
 
 	<properties>
-		<java.version>8</java.version>
+		<java.version>15</java.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -32,10 +28,20 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>junit</groupId>
+					<artifactId>junit</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
