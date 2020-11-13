@@ -17,12 +17,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class ChainTest {
 
     private DirectorRoleHandler salvo;
+    private VPRoleHandler vlad;
 
     @BeforeEach
     void setUp() {
         // In the company we have tre people with roles
         CEORoleHandler jeff = new CEORoleHandler();
-        VPRoleHandler vlad = new VPRoleHandler();
+        vlad = new VPRoleHandler();
         salvo = new DirectorRoleHandler();
 
         //Build the chain with the roles
@@ -46,7 +47,7 @@ public class ChainTest {
     }
 
     @Test
-    void NonConferenceIsNotManagedByDirector() {
+    void nonConferenceIsNotManagedByDirector() {
         //Purchase request with amount<=1500 is managed by VP
         assertThat(salvo.handleRequest(new Request(RequestType.PURCHASE, 0)))
                 .isEqualTo("VPs has Approved the request PURCHASE with amount 0.0");
@@ -60,6 +61,13 @@ public class ChainTest {
         //ALL remaining requests is managed by CEO
         assertThat(salvo.handleRequest(new Request(RequestType.PURCHASE, 10000)))
                 .isEqualTo("CEO has Approved the request PURCHASE with amount 10000.0");
+    }
+
+    @Test
+    void vpRoleCannotManageConferenceRequests() {
+        assertThrows(UnsupportedOperationException.class, () -> {
+            vlad.handleRequest(new Request(RequestType.CONFERENCE, 10000));
+        });
     }
 
 
