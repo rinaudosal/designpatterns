@@ -3,18 +3,18 @@ package com.github.rinaudosal.designpatterns.behavioral.command;
 import java.util.List;
 
 /**
- * {@link TurnOffAllLightsCommand} implementation to turn off all Lights
+ * {@link TurnOffAllLightsLightCommand} implementation to turn off all Lights
  */
-public class TurnOffAllLightsCommand implements Command {
+public class TurnOffAllLightsLightCommand implements LightCommand {
 
-    private List<Light> lights;
+    private final List<Light> lights;
 
     /**
      * Required data are filled in constructor
      *
      * @param lights the lights to be turn off
      */
-    public TurnOffAllLightsCommand(List<Light> lights) {
+    public TurnOffAllLightsLightCommand(List<Light> lights) {
         this.lights = lights;
     }
 

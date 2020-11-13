@@ -2,16 +2,16 @@ package com.github.rinaudosal.designpatterns.behavioral.command;
 
 
 /**
- * Invoker actor in Command Patter
+ * The Invoker - Invoke the receiver
  */
-public class Switch {
+public class LightInvoker {
 
     /**
      * Invoke method
      *
      * @param command command to execute
      */
-    public void storeAndExecute(Command command) {
+    public void storeAndExecute(LightCommand command) {
         command.execute();
     }
 }

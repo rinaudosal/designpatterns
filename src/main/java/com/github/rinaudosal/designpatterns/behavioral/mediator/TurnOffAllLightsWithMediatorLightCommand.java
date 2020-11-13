@@ -1,15 +1,15 @@
 package com.github.rinaudosal.designpatterns.behavioral.mediator;
 
-import com.github.rinaudosal.designpatterns.behavioral.command.Command;
+import com.github.rinaudosal.designpatterns.behavioral.command.LightCommand;
 
 /**
  * ConcreteCommand with mediator to manage Lights
  */
-public class TurnOffAllLightsWithMediatorCommand implements Command {
+public class TurnOffAllLightsWithMediatorLightCommand implements LightCommand {
 
     private Mediator med;
 
-    public TurnOffAllLightsWithMediatorCommand(Mediator med) {
+    public TurnOffAllLightsWithMediatorLightCommand(Mediator med) {
         this.med = med;
     }
 

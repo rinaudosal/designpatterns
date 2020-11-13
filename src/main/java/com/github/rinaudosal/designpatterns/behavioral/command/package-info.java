@@ -1,7 +1,7 @@
 /**
  * Package thath contains Example for behavioral pattern Command
- * 2019/07/18
+ * 2020/11/13
  *
- * @author Sirius
+ * @author rinaudo.sal@gmail.com
  */
 package com.github.rinaudosal.designpatterns.behavioral.command;

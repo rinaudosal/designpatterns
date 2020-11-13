@@ -4,11 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Receiver actor in Command Pattern
+ * The Receiver
  */
 public class Light {
-    private static final Logger logger = LoggerFactory.getLogger(Light.class);
-
     private boolean isOn = false;
 
     public boolean isOn() {
@@ -28,7 +26,6 @@ public class Light {
      */
     public void on() {
         this.isOn = true;
-        logger.info("Light switched on.");
     }
 
     /**
@@ -36,6 +33,5 @@ public class Light {
      */
     public void off() {
         this.isOn = false;
-        logger.info("Light switched off.");
     }
 }

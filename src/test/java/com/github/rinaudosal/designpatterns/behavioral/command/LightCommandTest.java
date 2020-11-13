@@ -9,31 +9,31 @@ import java.util.Arrays;
 /**
  * Test example in Command Pattern Example
  */
-public class CommandTest {
+public class LightCommandTest {
 
     private Light bedroomLight;
     private Light kitchenLight;
-    private Switch lightSwitch;
+    private LightInvoker lightLightInvoker;
 
     @BeforeEach
     public void setUp() {
         bedroomLight = new Light();
         kitchenLight = new Light();
 
-        lightSwitch = new Switch();
+        lightLightInvoker = new LightInvoker();
     }
 
     @Test
     public void turnOffAllLights() {
         // Receivers
-        bedroomLight.on();
+        bedroomLight.off();
         kitchenLight.on();
 
         // Command
-        Command turnOffCommand = new TurnOffAllLightsCommand(Arrays.asList(bedroomLight, kitchenLight));
+        LightCommand turnOffCommand = new TurnOffAllLightsLightCommand(Arrays.asList(bedroomLight, kitchenLight));
 
         // Invoker
-        lightSwitch.storeAndExecute(turnOffCommand);
+        lightLightInvoker.storeAndExecute(turnOffCommand);
 
         // Assertion
         Assertions.assertThat(bedroomLight.isOn()).isFalse();
@@ -47,10 +47,10 @@ public class CommandTest {
         kitchenLight.on();
 
         // Command
-        Command toggleAllLightsCommand = new ToggleAllLightsCommand(Arrays.asList(bedroomLight, kitchenLight));
+        LightCommand toggleAllLightsCommand = new ToggleAllLightsCommand(Arrays.asList(bedroomLight, kitchenLight));
 
         // Invoker
-        lightSwitch.storeAndExecute(toggleAllLightsCommand);
+        lightLightInvoker.storeAndExecute(toggleAllLightsCommand);
 
         // Assertion
         Assertions.assertThat(bedroomLight.isOn()).isTrue();
@@ -63,10 +63,10 @@ public class CommandTest {
         kitchenLight.on();
 
         // Command
-        Command toggleCommand = new ToggleCommand(kitchenLight);
+        LightCommand toggleCommand = new ToggleLightCommand(kitchenLight);
 
         // Invoker
-        lightSwitch.storeAndExecute(toggleCommand);
+        lightLightInvoker.storeAndExecute(toggleCommand);
 
         // Assertion
         Assertions.assertThat(kitchenLight.isOn()).isFalse();

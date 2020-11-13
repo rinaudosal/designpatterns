@@ -2,13 +2,13 @@ package com.github.rinaudosal.designpatterns.behavioral.command;
 
 
 /**
- * {@link ToggleCommand} command to switch single light to toggle
+ * {@link ToggleLightCommand} toggler for the light
  */
-public class ToggleCommand implements Command {
+public class ToggleLightCommand implements LightCommand {
 
     private Light light;
 
-    public ToggleCommand(Light light) {
+    public ToggleLightCommand(Light light) {
         this.light = light;
     }
 

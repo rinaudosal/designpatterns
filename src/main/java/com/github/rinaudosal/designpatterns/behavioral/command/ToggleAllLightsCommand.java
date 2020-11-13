@@ -5,9 +5,9 @@ import java.util.List;
 /**
  * {@link ToggleAllLightsCommand} implementation to turn off all Lights
  */
-public class ToggleAllLightsCommand implements Command {
+public class ToggleAllLightsCommand implements LightCommand {
 
-    private List<Light> lights;
+    private final List<Light> lights;
 
     /**
      * Required data are filled in constructor
