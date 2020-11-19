@@ -3,7 +3,7 @@ package com.github.rinaudosal.designpatterns.behavioral.interpreter;
 import java.util.stream.Stream;
 
 public class OrExpression implements Expression {
-    private Expression[] expressions;
+    private final Expression[] expressions;
 
     public OrExpression(Expression... expressions) {
         this.expressions = expressions;

@@ -1,5 +1,6 @@
 package com.github.rinaudosal.designpatterns.behavioral.interpreter;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 /**
@@ -7,7 +8,7 @@ import java.util.stream.Stream;
  */
 public class AndExpression implements Expression {
 
-    private Expression[] expressions;
+    private final Expression[] expressions;
 
     /**
      * Constructor with expressions to be interpret in method
@@ -20,7 +21,7 @@ public class AndExpression implements Expression {
 
     @Override
     public boolean interpret(String context) {
-        return Stream.of(expressions)
+        return Arrays.stream(expressions)
             .map(a -> a.interpret(context))
             .reduce((a, b) -> a && b)
             .orElse(false);

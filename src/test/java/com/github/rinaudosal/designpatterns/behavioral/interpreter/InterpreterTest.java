@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class InterpreterTest {
+class InterpreterTest {
 
     private Expression target;
 
@@ -30,13 +30,12 @@ public class InterpreterTest {
     }
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         target = buildInterpreterTree();
-
     }
 
     @Test
-    public void interpretCorrectlyStrings() {
+    void interpretCorrectlyStrings() {
         Assertions.assertThat(target.interpret("Bears")).isFalse();
         Assertions.assertThat(target.interpret("Tigers")).isFalse();
         Assertions.assertThat(target.interpret("Lions")).isFalse();
