@@ -1,35 +1,45 @@
 package com.github.rinaudosal.designpatterns.behavioral.iterator;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class BikeRepositoryIteratorTest {
+class BikeRepositoryIteratorTest {
 
     private static BikeRepository bikeRepository;
 
     @BeforeEach
     public void setUp() throws Exception {
-        bikeRepository = new BikeRepository();
+        // i can add major than initial size
+        bikeRepository = new BikeRepository(1);
         bikeRepository.addBike("Cervelo");
         bikeRepository.addBike("Scott");
         bikeRepository.addBike("Fuji");
     }
 
     @Test
-    public void bykeRepositoryAreImplementedCorrectly() {
+    void iCanUseForeachMethodOnBikeRepository() {
+        final StringBuilder concatenatedBikeNames = new StringBuilder();
+        bikeRepository.forEach(concatenatedBikeNames::append);
+        assertThat(concatenatedBikeNames.toString()).isEqualTo("CerveloScottFuji");
+    }
 
-        // if my object implement iterator interface i can use foreach method!
-        bikeRepository.forEach(bike -> System.out.println(bike));
-
+    @Test
+    void iCanUseForMethodOnBikeRepository() {
+        final StringBuilder concatenatedBikeNames = new StringBuilder();
         for (String bike : bikeRepository) {
-            System.out.println(bike);
+            concatenatedBikeNames.append(bike);
         }
 
+        assertThat(concatenatedBikeNames.toString()).isEqualTo("CerveloScottFuji");
+    }
+
+    @Test
+    public void bykeRepositoryAreImplementedCorrectly() {
         Iterator<String> bikeIterator = bikeRepository.iterator();
         assertThat(bikeIterator.next()).isEqualTo("Cervelo");
         assertThat(bikeIterator.next()).isEqualTo("Scott");
@@ -38,7 +48,7 @@ public class BikeRepositoryIteratorTest {
 
     @Test
     public void removeOperationAreUnsupported() {
-        assertThrows(UnsupportedOperationException.class, () -> {
+        Assertions.assertThrows(UnsupportedOperationException.class, () -> {
             bikeRepository.iterator().remove();
         });
     }

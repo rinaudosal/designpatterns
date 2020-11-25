@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 /**
  * ConcreteIterator of Patter Iterator
- * In this class i have build a manually iterator of bikes like {@link java.util.List}
+ * In this class i builded manually the iterator of bikes like to {@link java.util.List}
  */
 public class BikeRepository implements Iterable<String> {
 
@@ -15,8 +15,8 @@ public class BikeRepository implements Iterable<String> {
     /**
      * Costructor that initialize with default data to iterate
      */
-    public BikeRepository() {
-        bikes = new String[10];
+    public BikeRepository(int initialSize) {
+        bikes = new String[initialSize];
         index = 0;
     }
 

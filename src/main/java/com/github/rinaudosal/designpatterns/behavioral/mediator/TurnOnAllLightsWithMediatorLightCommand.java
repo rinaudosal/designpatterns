@@ -7,14 +7,14 @@ import com.github.rinaudosal.designpatterns.behavioral.command.LightCommand;
  */
 public class TurnOnAllLightsWithMediatorLightCommand implements LightCommand {
 
-    private Mediator med;
+    private final Mediator mediator;
 
-    public TurnOnAllLightsWithMediatorLightCommand(Mediator med) {
-        this.med = med;
+    public TurnOnAllLightsWithMediatorLightCommand(Mediator mediator) {
+        this.mediator = mediator;
     }
 
     @Override
     public void execute() {
-        med.turnOnAllLights();
+        mediator.turnOnAllLights();
     }
 }
