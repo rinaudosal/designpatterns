@@ -1,26 +1,30 @@
 package com.github.rinaudosal.designpatterns.behavioral.memento;
 
+import lombok.Getter;
+
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * In Memento pattern this is the Originator Actor
  */
+@Getter
 public class Employee implements Serializable {
 
+    private final String id;
     private String name;
     private String address;
     private String phone;
 
-    public String getAddress() {
-        return address;
+    public Employee() {
+        this.id = UUID.randomUUID().toString();
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getPhone() {
-        return phone;
+    public Employee(String id, String name, String address, String phone) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
     }
 
     public void setAddress(String address) {
@@ -35,17 +39,13 @@ public class Employee implements Serializable {
         this.phone = phone;
     }
 
-    public String toString() {
-        return name + " : " + phone;
-    }
-
     /**
      * Save actual istance of object to be reverted
      *
      * @return Data stored
      */
-    public EmployeeMemento save() {
-        return new EmployeeMemento(name, phone);
+    public Employee save() {
+        return new Employee(id, name, address, phone);
     }
 
     /**
@@ -53,8 +53,9 @@ public class Employee implements Serializable {
      *
      * @param employeeMemento last record saved
      */
-    public void revert(EmployeeMemento employeeMemento) {
+    public void revert(Employee employeeMemento) {
         this.name = employeeMemento.getName();
         this.phone = employeeMemento.getPhone();
+        this.address = employeeMemento.getAddress();
     }
 }
