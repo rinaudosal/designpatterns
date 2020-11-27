@@ -8,6 +8,5 @@ package com.github.rinaudosal.designpatterns.behavioral.state;
 public enum StateEnum {
     OFF,
     LOW,
-    MEDIUM,
     HIGH
 }

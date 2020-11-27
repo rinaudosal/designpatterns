@@ -1,15 +1,11 @@
 package com.github.rinaudosal.designpatterns.behavioral.state;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Concrete State class to manage {@link FanLowState}
  */
-public class FanLowState extends State {
-    private static final Logger log = LoggerFactory.getLogger(FanLowState.class);
+public class FanLowState implements State {
 
-    private Fan fan;
+    private final Fan fan;
 
     public FanLowState(Fan fan) {
         this.fan = fan;
@@ -17,11 +13,6 @@ public class FanLowState extends State {
 
     @Override
     public void handleRequest() {
-        log.info("Turning fan on to med.");
-        fan.setState(fan.getFanState(StateEnum.MEDIUM));
-    }
-
-    public String toString() {
-        return "Fan is low.";
+        fan.setMessage("Fan is Low");
     }
 }

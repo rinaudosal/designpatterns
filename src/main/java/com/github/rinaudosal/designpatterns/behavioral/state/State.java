@@ -3,12 +3,10 @@ package com.github.rinaudosal.designpatterns.behavioral.state;
 /**
  * Abstract Class that are extended of all ConcreteStates developed
  */
-public abstract class State {
+public interface State {
 
-	/**
-	 * Generic method to request to change Fun State
-	 */
-	public void handleRequest() {
-		throw new UnsupportedOperationException("Shouldn't be able to get here.");
-	}
+    /**
+     * Generic method to request to change The State
+     */
+    void handleRequest();
 }

@@ -1,7 +1,8 @@
 package com.github.rinaudosal.designpatterns.behavioral.observer;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class NewsTest {
 
@@ -15,8 +16,8 @@ public class NewsTest {
         newsToComunicate.addPropertyChangeListener(facebook);
         newsToComunicate.sendTopicNews("Hey, Salvo have a great news!");
 
-        Assertions.assertThat(twitter.getNews()).isEqualTo("Hey, Salvo have a great news!");
-        Assertions.assertThat(facebook.getNews()).isEqualTo("Hey, Salvo have a great news!");
+        assertThat(twitter.getNews()).isEqualTo("Hey, Salvo have a great news!");
+        assertThat(facebook.getNews()).isEqualTo("Hey, Salvo have a great news!");
     }
 
     @Test
@@ -29,14 +30,14 @@ public class NewsTest {
         newsToComunicate.addPropertyChangeListener(facebook);
         newsToComunicate.sendTopicNews("Hey, Salvo have a great news!");
 
-        Assertions.assertThat(twitter.getNews()).isEqualTo("Hey, Salvo have a great news!");
-        Assertions.assertThat(facebook.getNews()).isEqualTo("Hey, Salvo have a great news!");
+        assertThat(twitter.getNews()).isEqualTo("Hey, Salvo have a great news!");
+        assertThat(facebook.getNews()).isEqualTo("Hey, Salvo have a great news!");
 
         newsToComunicate.removePropertyChangeListener(facebook);
         newsToComunicate.sendTopicNews("Well, done!");
 
-        Assertions.assertThat(twitter.getNews()).isEqualTo("Well, done!");
-        Assertions.assertThat(facebook.getNews()).isEqualTo("Hey, Salvo have a great news!");
+        assertThat(twitter.getNews()).isEqualTo("Well, done!");
+        assertThat(facebook.getNews()).isEqualTo("Hey, Salvo have a great news!");
 
     }
 }

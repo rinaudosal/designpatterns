@@ -11,41 +11,40 @@ public class Fan {
     /**
      * Map containing all states allowed for Fan class
      */
-    Map<StateEnum, State> states;
+    private final Map<StateEnum, State> acceptableStates;
 
     /**
      * The actual state
      */
     private State state;
 
+    private String message;
+
     public Fan() {
-        states = new HashMap<>();
-        states.put(StateEnum.OFF, new FanOffState(this));
-        states.put(StateEnum.LOW, new FanLowState(this));
-        states.put(StateEnum.MEDIUM, new FanMedState(this));
-        states.put(StateEnum.HIGH, new FanHighState(this));
+        acceptableStates = new HashMap<>();
+        acceptableStates.put(StateEnum.OFF, new FanOffState(this));
+        acceptableStates.put(StateEnum.LOW, new FanLowState(this));
+        acceptableStates.put(StateEnum.HIGH, new FanHighState(this));
 
-        state = states.get(StateEnum.OFF);
+        // we set fan state to OFF by default
+        state = acceptableStates.get(StateEnum.OFF);
     }
 
-    public void pullChain() {
+    public void pullChain(StateEnum stateEnum) {
+        state = acceptableStates.get(stateEnum);
         state.handleRequest();
-    }
-
-    public String toString() {
-        return state.toString();
     }
 
     public State getState() {
         return state;
     }
 
-    public State getFanState(StateEnum stateEnum) {
-        return states.get(stateEnum);
+    public String getMessage() {
+        return message;
     }
 
-    public void setState(State state) {
-        this.state = state;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
 
