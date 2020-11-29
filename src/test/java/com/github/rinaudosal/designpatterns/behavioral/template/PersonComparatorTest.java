@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class TemplateComparatorTest {
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class PersonComparatorTest {
 
     private List<Person> people;
     private Person bryan;
@@ -29,12 +31,20 @@ public class TemplateComparatorTest {
 
     @Test
     public void peopleNotSorted() {
-        Assertions.assertThat(people).containsExactly(bryan, mark, chris);
+        assertThat(people).containsExactly(bryan, mark, chris);
+        checkPerson(bryan, 39, "Bryan", "801-555-1212");
     }
 
     @Test
     public void peolpleSortedWithItsSort() {
         Collections.sort(people);
-        Assertions.assertThat(people).containsExactly(chris, bryan, mark);
+        assertThat(people).containsExactly(chris, bryan, mark);
+    }
+
+    private void checkPerson(Person person, int age, String name, String phoneNumber) {
+        assertThat(person.getAge()).isEqualTo(age);
+        assertThat(person.getName()).isEqualTo(name);
+        assertThat(person.getPhoneNumber()).isEqualTo(phoneNumber);
+
     }
 }

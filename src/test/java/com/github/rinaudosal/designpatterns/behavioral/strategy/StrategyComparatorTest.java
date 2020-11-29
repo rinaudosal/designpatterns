@@ -26,7 +26,6 @@ public class StrategyComparatorTest {
         people.add(bryan);
         people.add(mark);
         people.add(chris);
-
     }
 
     @Test
@@ -36,47 +35,18 @@ public class StrategyComparatorTest {
 
     @Test
     public void collectionSortedByPhoneNumberWithComparator() {
-
-        Collections.sort(people, new Comparator<Person>() {
-            @Override
-            public int compare(Person o1, Person o2) {
-                if (o1.getAge() > o2.getAge()) {
-                    return 1;
-                }
-
-                if (o1.getAge() < o2.getAge()) {
-                    return -1;
-                }
-
-                return 0;
-            }
-        });
-
-        Assertions.assertThat(people).containsExactly(chris, bryan, mark);
-
+        people.sort(Comparator.comparing(Person::getPhoneNumber));
+        Assertions.assertThat(people).containsExactly(chris, mark, bryan);
     }
 
     @Test
     public void collectionSortedByAgeWithLambda() {
-
-        Collections.sort(people, (o1, o2) -> {
-            if (o1.getAge() > o2.getAge()) {
-                return 1;
-            }
-
-            if (o1.getAge() < o2.getAge()) {
-                return -1;
-            }
-
-            return 0;
-        });
-
+        people.sort(Comparator.comparingInt(Person::getAge));
         Assertions.assertThat(people).containsExactly(chris, bryan, mark);
-
     }
 
     @Test
-    public void collectionSortedByNameJava8() {
+    public void collectionSortedByName() {
         people.sort(Comparator.comparing(Person::getName));
         Assertions.assertThat(people).containsExactly(bryan, chris, mark);
     }

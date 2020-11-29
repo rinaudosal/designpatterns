@@ -1,32 +1,33 @@
 package com.github.rinaudosal.designpatterns.behavioral.template;
 
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.UUID;
 
 /**
  * Implementation of {@link OrderTemplate} template
  */
+@Slf4j
 public class StoreOrder extends OrderTemplate {
-    private static final Logger log = LoggerFactory.getLogger(StoreOrder.class);
 
     @Override
-    public void doCheckout() {
-        log.info("Ring up items from cart.");
+    public void doCheckout(String productName) {
+        setProductName(productName);
     }
 
     @Override
-    public void doPayment() {
-        log.info("Process payment with Card present");
+    public void doPayment(Double price) {
+        setPrice(price);
     }
 
     @Override
-    public void doDelivery() {
-        log.info("Bag items at counter");
+    public void doDelivery(String address) {
+        setAddress(address);
     }
 
     @Override
     public void doReceipt() {
-        log.info("Print receipt");
+        setReceiptNumber(UUID.randomUUID().toString());
     }
 }

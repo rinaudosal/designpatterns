@@ -1,22 +1,31 @@
 package com.github.rinaudosal.designpatterns.behavioral.strategy;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Domain class that have {@link ValidationStrategy} example for validity of credit card
  */
 public class CreditCard {
 
+    @Getter
+    @Setter
     private String number;
+    @Getter
+    @Setter
     private String date;
+    @Getter
+    @Setter
     private String cvv;
 
     /**
      * Strategy managed from the client, domain class don't know which strategy are applied
      */
-    private ValidationStrategy strategy;
+    private final ValidationStrategy strategy;
 
 
     /**
-     * in constractor class Validation are required, because otherwire maybe have {@link NullPointerException}
+     * in the constructor, the Validation class is required, because otherwire maybe you will have {@link NullPointerException}
      *
      * @param strategy the concrete strategy
      */
@@ -33,27 +42,4 @@ public class CreditCard {
         return strategy.isValid(this);
     }
 
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getCvv() {
-        return cvv;
-    }
-
-    public void setCvv(String cvv) {
-        this.cvv = cvv;
-    }
 }
