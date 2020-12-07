@@ -13,7 +13,7 @@ class BikeRepositoryIteratorTest {
     private static BikeRepository bikeRepository;
 
     @BeforeEach
-    public void setUp() throws Exception {
+    void setUp() {
         // i can add major than initial size
         bikeRepository = new BikeRepository(1);
         bikeRepository.addBike("Cervelo");
@@ -39,7 +39,7 @@ class BikeRepositoryIteratorTest {
     }
 
     @Test
-    public void bykeRepositoryAreImplementedCorrectly() {
+    void bykeRepositoryAreImplementedCorrectly() {
         Iterator<String> bikeIterator = bikeRepository.iterator();
         assertThat(bikeIterator.next()).isEqualTo("Cervelo");
         assertThat(bikeIterator.next()).isEqualTo("Scott");
@@ -47,9 +47,19 @@ class BikeRepositoryIteratorTest {
     }
 
     @Test
-    public void removeOperationAreUnsupported() {
+    void removeOperationAreUnsupported() {
         Assertions.assertThrows(UnsupportedOperationException.class, () -> {
             bikeRepository.iterator().remove();
         });
     }
+
+    @Test
+    void hasNextIsFalseIfListNullOrEmpty() {
+        bikeRepository = new BikeRepository(1);
+        assertThat(bikeRepository.iterator().hasNext()).isFalse();
+    }
+
+
+
+
 }
