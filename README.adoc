@@ -1,9 +1,4 @@
-= Design Pattern in Java
-image:.github/badges/jacoco.svg["Coverage"]
-<img src="https://raw.githubusercontent.com/rinaudosal/designpatterns/master/.github/badges/jacoco.svg">
-
-Terzo (.github/badges/jacoco.svg)
-Quarto (ddd)[.github/badges/jacoco.svg]
+= Design Pattern in Java image:https://github.com/rinaudosal/designpatterns/workflows/build/badge.svg["build"] image:.github/badges/jacoco.svg["Coverage"]
 
 Repository providing an useful content with most of the popular design pattern.
 Are implemented any examples of the most popular design pattern and For each use case has provided how to test it.
