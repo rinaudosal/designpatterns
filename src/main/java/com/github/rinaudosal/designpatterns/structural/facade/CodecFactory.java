@@ -1,6 +1,8 @@
 package com.github.rinaudosal.designpatterns.structural.facade;
 
-public class CodecFactory {
+public final class CodecFactory {
+
+    private CodecFactory(){}
 
     public static Codec extract(String extension) {
         return switch (extension) {
