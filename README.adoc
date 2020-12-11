@@ -1,6 +1,6 @@
 = Design Pattern in Java image:https://github.com/rinaudosal/designpatterns/workflows/build/badge.svg["build"] image:.github/badges/jacoco.svg["Coverage"]
 
-Repository providing an useful content with most of the popular design pattern.
+Repository providing a useful content with most of the popular design pattern.
 Are implemented any examples of the most popular design pattern and For each use case has provided how to test it.
 
 You can use this project for free use, feel free to integrate it or send a pull request or feedback!
@@ -14,15 +14,13 @@ For each design pattern are described the following consideration:
 
 * Short description
 * Implementation in Java API
-* Consideration
 
 == Behavioural Patterns
 
 Behavioral Patterns are concerned with providing solutions regarding object interaction
 - how they communicate, how are some dependent on others, and how to segregate them to be both dependent and independent and provide both flexibility and testing capabilities.
 
-=== Chain of Responsability
-
+=== Chain of Responsibility
 This pattern is useful when we want decouple Sender and Receiver.
 The Sender don't know who execute the operation sent, the receiver don't know who has call them.
 The Sender invoke an Handler where the chain has builded and only him know how the chain is builded.

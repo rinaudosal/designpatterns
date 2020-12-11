@@ -28,6 +28,8 @@ class MediatorSchedulerTest {
     @Test
     void mediatorExecuteActions() throws Exception {
         MediatorScheduler target = new MediatorScheduler(new Timer(), 1);
+
+        //Warning!!!! It's only for test of the design pattern purpose, insert a sleep/wait method in the test it's an anti-pattern!
         Thread.sleep(22);
 
         assertThat(target.getTaskList()).hasSize(2);
