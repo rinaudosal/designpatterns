@@ -5,6 +5,8 @@ Are implemented any examples of the most popular design pattern and For each use
 
 You can use this project for free use, feel free to integrate it or send a pull request or feedback!
 
+The examples and usages in Java Examples are inspired from https://app.pluralsight.com/profile/author/bryan-hansen[Bryan Hansen] courses on Pluralsight
+
 To run the test after uploading the repo try this:
 ----
 	mvn clean verify
